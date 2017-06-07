@@ -1,6 +1,6 @@
 # IFRS Cursus
 
-Repositório Aberto de Cursos Acadêmicos do [Instituto Federal do Rio Grande do Sul](http://ifrs.edu.br/).
+Repositório de Cursos Acadêmicos do [Instituto Federal do Rio Grande do Sul](http://ifrs.edu.br/).
 
 ---
 
