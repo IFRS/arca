@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TurnosTableSeeder::class);
         $this->call(ModalidadesTableSeeder::class);
         $this->call(NiveisTableSeeder::class);
+        $this->call(CampiTableSeeder::class);
     }
 }
