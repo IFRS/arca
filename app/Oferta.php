@@ -36,4 +36,20 @@ class Oferta extends Model
     {
         return $this->belongsToMany('App\Turno', 'ofertas_turnos', 'oferta_id', 'turno_id');
     }
+
+    /**
+     * Obtém a Modalidade da Ofeta.
+     */
+    public function modalidade()
+    {
+        return $this->belongsTo('App\Modalidade', 'modalidade_id');
+    }
+
+    /**
+     * Obtém o Nível da Ofeta.
+     */
+    public function nivel()
+    {
+        return $this->belongsTo('App\Nivel', 'nivel_id');
+    }
 }

@@ -19,4 +19,12 @@ class Nivel extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Obtém as Ofetas do Nível.
+     */
+    public function ofertas()
+    {
+        return $this->hasMany('App\Oferta', 'nivel_id');
+    }
 }

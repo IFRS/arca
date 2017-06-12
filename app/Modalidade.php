@@ -19,4 +19,12 @@ class Modalidade extends Model
      * @var bool
      */
     public $timestamps = false;
+
+    /**
+     * Obtém as Ofetas da Modalidade.
+     */
+    public function ofertas()
+    {
+        return $this->hasMany('App\Oferta', 'modalidade_id');
+    }
 }
