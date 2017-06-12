@@ -32,6 +32,12 @@ class CreateOfertasTable extends Migration
 
             $table->integer('campus_id')->unsigned();
             $table->foreign('campus_id')->references('id')->on('campi')->onDelete('cascade');
+
+            $table->integer('modalidade_id')->unsigned();
+            $table->foreign('modalidade_id')->references('id')->on('modalidades');
+
+            $table->integer('nivel_id')->unsigned();
+            $table->foreign('nivel_id')->references('id')->on('niveis');
         });
     }
 
