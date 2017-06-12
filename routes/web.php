@@ -15,3 +15,6 @@ Route::get('/', function() {
     return redirect(env('APP_ROOT_REDIRECT', 'app.index'));
 });
 
+Route::group(['prefix' => 'app'], function () {
+    Route::get('/', ['as' => 'app.index', 'uses' => 'IndexController']);
+});
