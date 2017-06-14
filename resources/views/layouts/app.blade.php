@@ -12,10 +12,10 @@
         <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
     </head>
     <body>
+        @stack('modals')
         <header>
             <h1 class="sr-only">IFRS Cursus - Repositório de Cursos do IFRS</h1>
-            @component('_menu')
-            @endcomponent
+            @include('partials.menu')
         </header>
 
         <section role="main" class="container">
