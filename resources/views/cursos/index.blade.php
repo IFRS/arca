@@ -31,10 +31,8 @@
         </thead>
         <tbody>
         @foreach ($cursos as $key => $curso)
-            <tr v-for="curso in cursos">
-                <td>{{ $curso->id }}</td>
-                <td><a href="#curso-{{ $curso->id }}" data-toggle="modal">{{ $curso->nome }}</a></td>
-                <div class="modal fade" id="curso-{{ $curso->id }}" tabindex="-1" role="dialog">
+            @push('modals')
+                <div class="modal fade" id="modal-curso-{{ $curso->id }}" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -67,9 +65,13 @@
                             <div class="modal-footer">
                                 <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $curso->updated_at ? $curso->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
                             </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                        </div>
+                    </div>
+                </div>
+            @endpush
+            <tr>
+                <td>{{ $curso->id }}</td>
+                <td><a href="#modal-curso-{{ $curso->id }}" data-toggle="modal">{{ $curso->nome }}</a></td>
                 <td>{{ count($curso->ofertas) }}</td>
                 <td>{{ $curso->created_at ? $curso->created_at->format('d/m/Y h:i'): '-' }}</td>
                 <td>{{ $curso->updated_at ? $curso->updated_at->format('d/m/Y h:i') : '-' }}</td>
