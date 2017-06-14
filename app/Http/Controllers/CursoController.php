@@ -58,7 +58,7 @@ class CursoController extends Controller
      */
     public function show(Curso $curso)
     {
-        //
+        return redirect()->route('cursos.index');
     }
 
     /**
@@ -100,8 +100,15 @@ class CursoController extends Controller
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Curso $curso)
+    public function destroy(Request $request, Curso $curso)
     {
-        //
+        $curso = Curso::find($curso->id);
+        if ($curso->delete()) {
+            $request->session()->flash('status', 'Curso removido com sucesso!');
+        } else {
+            $request->session()->flash('status', 'Ocorreu um erro ao remover o curso.');
+        }
+
+        return redirect()->route('cursos.index');
     }
 }
