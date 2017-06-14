@@ -9,7 +9,7 @@ use App\Http\Requests\StoreCurso;
 class CursoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra a lista de Cursos.
      *
      * @return \Illuminate\Http\Response
      */
@@ -20,95 +20,74 @@ class CursoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostra o fomulário para criar um novo Curso.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function novo()
     {
         $curso = new Curso();
         return view('cursos.create')->with('curso', $curso);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreCurso $request)
-    {
-        $curso = new Curso();
-        $curso->nome = $request->nome;
-        $curso->apresentacao = $request->apresentacao;
-        if ($curso->save()) {
-            $request->session()->flash('status', 'Curso cadastrado com sucesso!');
-        } else {
-            $request->session()->flash('status', 'Ocorreu um erro ao cadastrar o curso.');
-        }
-
-        return redirect()->route('cursos.index');
-    }
-
-    /**
-     * Display the specified resource.
+     * Mostra o fomulário para editar um Curso já existente.
      *
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
-    public function show(Curso $curso)
-    {
-        return redirect()->route('cursos.index');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Curso $curso)
+    public function editar(Curso $curso)
     {
         $curso = Curso::find($curso->id);
         return view('cursos.edit')->with('curso', $curso);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Salva um Curso novo ou já existente.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreCurso  $request
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreCurso $request, Curso $curso)
+    public function save(StoreCurso $request, Curso $curso)
     {
-        $curso = Curso::find($curso->id);
+        if (!$curso->exists) {
+            $curso = new Curso();
+        }
         $curso->nome = $request->nome;
         $curso->apresentacao = $request->apresentacao;
         if ($curso->save()) {
-            $request->session()->flash('status', 'Curso atualizado com sucesso!');
+            $request->session()->flash('status', 'success');
+            if ($request->isMethod('PUT')) {
+                $request->session()->flash('message', 'Curso atualizado com sucesso!');
+            } else {
+                $request->session()->flash('message', 'Curso cadastrado com sucesso!');
+            }
         } else {
-            $request->session()->flash('status', 'Ocorreu um erro ao atualizar o curso.');
-        }
+            $request->session()->flash('status', 'danger');
+            if ($request->isMethod('PUT')) {
+                $request->session()->flash('message', 'Ocorreu um erro ao atualizar o curso.');
+            } else {
+                $request->session()->flash('message', 'Ocorreu um erro ao cadastrar o curso.');
+            }
 
+        }
         return redirect()->route('cursos.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove PERMANENTEMENTE o Curso.
      *
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Curso $curso)
     {
-        $curso = Curso::find($curso->id);
         if ($curso->delete()) {
             $request->session()->flash('status', 'Curso removido com sucesso!');
         } else {
             $request->session()->flash('status', 'Ocorreu um erro ao remover o curso.');
         }
-
         return redirect()->route('cursos.index');
     }
 }

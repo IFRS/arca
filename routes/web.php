@@ -18,5 +18,12 @@ Route::get('/', function() {
 Route::group(['prefix' => 'app'], function () {
     Route::get('/', ['as' => 'app.index', 'uses' => 'IndexController']);
 
-    Route::resource('cursos', 'CursoController');
+    // Route::resource('cursos', 'CursoController');
+
+    Route::get('cursos', 'CursoController@index')->name('cursos.index');
+    Route::get('cursos/novo', 'CursoController@novo')->name('cursos.create');
+    Route::post('cursos', 'CursoController@save')->name('cursos.store');
+    Route::get('cursos/{curso}/editar', 'CursoController@editar')->name('cursos.edit');
+    Route::put('cursos/{curso}', 'CursoController@save')->name('cursos.update');
+    Route::delete('cursos/destroy/{curso}', 'CursoController@destroy')->name('cursos.destroy');
 });
