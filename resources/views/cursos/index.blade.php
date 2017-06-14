@@ -4,12 +4,9 @@
     @if (Session::has('status') && Session::has('message'))
         <div class="row">
             <div class="col-xs-12">
-                <div class="alert alert-{{ Session::get('status') }}">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <p>{{ Session::get('message') }}</p>
-                </div>
+                @component('components.alert', ['status' => Session::get('status')])
+                    {{ Session::get('message') }}
+                @endcomponent
             </div>
         </div>
     @endif
