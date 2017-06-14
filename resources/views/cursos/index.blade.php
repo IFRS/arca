@@ -21,7 +21,7 @@
             <a href="{{ route('cursos.create') }}" class="btn btn-primary btn-sm pull-right">Adicionar novo</a>
         </div>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover table-cursos">
         <thead>
             <tr>
                 <th>#</th>
@@ -29,7 +29,7 @@
                 <th>Ofertas</th>
                 <th>Criado em</th>
                 <th>Modificado em</th>
-                <th class="text-center"><span class="glyphicon glyphicon-cog"></span><span class="sr-only">Ações</span></th>
+                <th class="text-center no-sort"><span class="glyphicon glyphicon-cog"></span><span class="sr-only">Ações</span></th>
             </tr>
         </thead>
         <tbody>
@@ -47,15 +47,19 @@
                             <div class="modal-body">
                                 <p>{{ $curso->apresentacao }}</p>
                                 <h4>Ofertas <span class="badge">{{ count($curso->ofertas) }}</span></h4>
+                                <ol>
                                 @foreach ($curso->ofertas as $oferta)
-                                    <p>{{ $oferta->campus->nome }} - {{ $oferta->modalidade->nome }} - {{ $oferta->nivel->nome }} -
+                                    <li>
+                                        <strong>{{ $oferta->campus->nome }}:</strong> {{ $oferta->modalidade->nome }} - {{ $oferta->nivel->pai->nome }} > {{ $oferta->nivel->nome }} -
                                     @foreach ($oferta->turnos as $turno)
                                         {{ $turno->nome }}
                                         @if (!$loop->last)
                                             {{ ', ' }}
                                         @endif
-                                    @endforeach</p>
+                                    @endforeach
+                                    </li>
                                 @endforeach
+                                </ol>
                             </div>
                             <div class="modal-footer">
                                 <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $curso->updated_at ? $curso->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
@@ -69,7 +73,11 @@
                 <td class="text-center">
                     <div class="btn-group">
                         <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-xs btn-default" title="Editar"><span class="glyphicon glyphicon-edit"></span><span class="sr-only">Editar</span></a>
-                        <a href="{{ route('cursos.destroy', $curso->id) }}" class="btn btn-xs btn-danger" title="Deletar"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Deletar</span></a>
+                        <form action="{{ route('cursos.destroy', $curso->id) }}" method="post">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" name="submit" value="delete" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Deletar</span></button>
+                        </form>
                     </div>
                 </td>
             </tr>
