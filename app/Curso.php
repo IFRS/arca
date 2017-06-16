@@ -30,6 +30,10 @@ class Curso extends Model
         self::deleting(function($model) {
             $model->ofertas()->delete();
         });
+
+        self::restored(function($model) {
+            $model->ofertas()->restore();
+        });
     }
 
     /**
