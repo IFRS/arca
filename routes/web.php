@@ -23,6 +23,5 @@ Route::group(['prefix' => 'app'], function () {
     Route::post('cursos', 'CursoController@save')->name('cursos.store');
     Route::get('cursos/{curso}/editar', 'CursoController@editar')->name('cursos.edit');
     Route::put('cursos/{curso}', 'CursoController@save')->name('cursos.update');
-    Route::delete('cursos/delete/{curso}', 'CursoController@delete')->name('cursos.delete');
     Route::delete('cursos/destroy/{curso}', 'CursoController@destroy')->name('cursos.destroy');
 });

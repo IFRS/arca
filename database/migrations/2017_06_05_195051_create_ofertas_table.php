@@ -16,7 +16,6 @@ class CreateOfertasTable extends Migration
         Schema::create('ofertas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->softDeletes();
 
             $table->text('descricao');
             $table->string('coordenador_nome');

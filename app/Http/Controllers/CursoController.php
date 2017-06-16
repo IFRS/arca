@@ -77,25 +77,6 @@ class CursoController extends Controller
     }
 
     /**
-     * Remove o Curso.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Curso  $curso
-     * @return \Illuminate\Http\Response
-     */
-    public function delete(Request $request, Curso $curso)
-    {
-        if ($curso->delete()) {
-            $request->session()->flash('status', 'success');
-            $request->session()->flash('message', 'Curso removido com sucesso!');
-        } else {
-            $request->session()->flash('status', 'danger');
-            $request->session()->flash('message', 'Ocorreu um erro ao remover o curso.');
-        }
-        return redirect()->route('cursos.index');
-    }
-
-    /**
      * Remove PERMANENTEMENTE o Curso.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -104,12 +85,12 @@ class CursoController extends Controller
      */
     public function destroy(Request $request, Curso $curso)
     {
-        if ($curso->forceDelete()) {
+        if ($curso->delete()) {
             $request->session()->flash('status', 'success');
-            $request->session()->flash('message', 'Curso removido permanentemente com sucesso!');
+            $request->session()->flash('message', 'Curso removido com sucesso!');
         } else {
             $request->session()->flash('status', 'danger');
-            $request->session()->flash('message', 'Ocorreu um erro ao remover permanentemente o curso.');
+            $request->session()->flash('message', 'Ocorreu um erro ao remover o curso.');
         }
         return redirect()->route('cursos.index');
     }
