@@ -16,9 +16,7 @@ Route::get('/', function() {
 });
 
 Route::group(['prefix' => 'app'], function () {
-    Route::get('/', ['as' => 'app.index', 'uses' => 'IndexController']);
-
-    // Route::resource('cursos', 'CursoController');
+    Route::get('/', 'IndexController')->name('app.index');
 
     Route::get('cursos', 'CursoController@index')->name('cursos.index');
     Route::get('cursos/novo', 'CursoController@novo')->name('cursos.create');
