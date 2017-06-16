@@ -43,7 +43,7 @@ class CursoController extends Controller
     }
 
     /**
-     * Salva um Curso novo ou já existente.
+     * Salva um Curso novo ou atualiza um já existente.
      *
      * @param  \App\Http\Requests\StoreCurso  $request
      * @param  \App\Curso  $curso
@@ -56,6 +56,7 @@ class CursoController extends Controller
         }
         $curso->nome = $request->nome;
         $curso->apresentacao = $request->apresentacao;
+        $curso->atuacao = $request->atuacao;
         if ($curso->save()) {
             $request->session()->flash('status', 'success');
             if ($request->isMethod('PUT')) {
@@ -76,17 +77,39 @@ class CursoController extends Controller
     }
 
     /**
+     * Remove o Curso.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Curso  $curso
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request, Curso $curso)
+    {
+        if ($curso->delete()) {
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('message', 'Curso removido com sucesso!');
+        } else {
+            $request->session()->flash('status', 'danger');
+            $request->session()->flash('message', 'Ocorreu um erro ao remover o curso.');
+        }
+        return redirect()->route('cursos.index');
+    }
+
+    /**
      * Remove PERMANENTEMENTE o Curso.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, Curso $curso)
     {
-        if ($curso->delete()) {
-            $request->session()->flash('status', 'Curso removido com sucesso!');
+        if ($curso->forceDelete()) {
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('message', 'Curso removido permanentemente com sucesso!');
         } else {
-            $request->session()->flash('status', 'Ocorreu um erro ao remover o curso.');
+            $request->session()->flash('status', 'danger');
+            $request->session()->flash('message', 'Ocorreu um erro ao remover permanentemente o curso.');
         }
         return redirect()->route('cursos.index');
     }
