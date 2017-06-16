@@ -26,6 +26,7 @@ class StoreCurso extends FormRequest
         return [
             'nome' => 'required|string|max:255',
             'apresentacao' => 'string|nullable',
+            'atuacao' => 'string|nullable',
         ];
     }
 
@@ -41,6 +42,7 @@ class StoreCurso extends FormRequest
             'nome.string' => 'O Nome precisa ter um valor alfanumérico.',
             'nome.max' => 'O Nome precisa ser menor que 255 caracteres.',
             'apresentacao.string'  => 'A Apresentação precisa ter um valor alfanumérico.',
+            'atuacao.string'  => 'A Área de Atuação precisa ter um valor alfanumérico.',
         ];
     }
 }
