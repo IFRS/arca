@@ -16,7 +16,7 @@
     <body>
         @stack('modals')
         <header>
-            <h1 class="sr-only">IFRS Cursus - Repositório de Cursos do IFRS</h1>
+            <h1 class="sr-only">IFRS Cursus - Repositório de Cursos Acad&ecirc;micos</h1>
             @include('partials.menu')
         </header>
 

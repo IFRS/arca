@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('app.index') }}">IFRS Cursus</a>
+            <a class="navbar-brand" href="{{ route('app.index') }}"><span class="glyphicon glyphicon-home"></span><span class="sr-only">In&iacute;cio</span></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
