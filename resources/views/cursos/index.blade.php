@@ -82,8 +82,8 @@
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <div class="btn-group">
-                            <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-xs btn-default" title="Editar Curso"><span class="glyphicon glyphicon-edit"></span><span class="sr-only">Editar Curso</span></a>
-                            <button type="submit" class="btn btn-xs btn-danger" title="Deletar Curso"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Deletar Curso</span></button>
+                            <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-xs btn-default" title="Editar &quot;{{ $curso->nome }}&quot;"><span class="glyphicon glyphicon-edit"></span><span class="sr-only">Editar &quot;{{ $curso->nome }}&quot;</span></a>
+                            <button type="submit" class="btn btn-xs btn-danger" title="Deletar &quot;{{ $curso->nome }}&quot;"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Deletar &quot;{{ $curso->nome }}&quot;</span></button>
                         </div>
                     </form>
                 </td>
