@@ -9,4 +9,4 @@ require('./bootstrap');
 
 require('./datatables');
 
-require('./confirm-delete');
+require('./confirm');
