@@ -78,7 +78,7 @@
                 <td>{{ $curso->created_at ? $curso->created_at->format('d/m/Y h:i'): '-' }}</td>
                 <td>{{ $curso->updated_at ? $curso->updated_at->format('d/m/Y h:i') : '-' }}</td>
                 <td class="text-center">
-                    <form action="{{ route('cursos.destroy', $curso->id) }}" method="post" class="destroy">
+                    <form action="{{ route('cursos.delete', $curso->id) }}" method="post" class="delete">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         <div class="btn-group">
