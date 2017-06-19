@@ -16,7 +16,8 @@ class CursoController extends Controller
     public function index()
     {
         $cursos = Curso::with('ofertas.turnos', 'ofertas.campus', 'ofertas.modalidade', 'ofertas.nivel')->get();
-        return view('cursos.index')->with('cursos', $cursos);
+        $cursos_trashed = Curso::onlyTrashed()->with('ofertas.turnos', 'ofertas.campus', 'ofertas.modalidade', 'ofertas.nivel')->get();
+        return view('cursos.index')->with('cursos', $cursos)->with('cursos_trashed', $cursos_trashed);
     }
 
     /**
@@ -87,10 +88,30 @@ class CursoController extends Controller
     {
         if ($curso->delete()) {
             $request->session()->flash('status', 'success');
-            $request->session()->flash('message', 'Curso removido com sucesso!');
+            $request->session()->flash('message', 'Curso enviado para a lixeira com sucesso!');
         } else {
             $request->session()->flash('status', 'danger');
-            $request->session()->flash('message', 'Ocorreu um erro ao remover o curso.');
+            $request->session()->flash('message', 'Ocorreu um erro ao enviar o curso para a lixeira.');
+        }
+        return redirect()->route('cursos.index');
+    }
+
+    /**
+     * Restaura o Curso.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore(Request $request, $id)
+    {
+        $curso = Curso::onlyTrashed()->find($id);
+        if ($curso->restore()) {
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('message', 'Curso restaurado com sucesso!');
+        } else {
+            $request->session()->flash('status', 'danger');
+            $request->session()->flash('message', 'Ocorreu um erro ao restaurar o curso.');
         }
         return redirect()->route('cursos.index');
     }
@@ -102,14 +123,15 @@ class CursoController extends Controller
      * @param  \App\Curso  $curso
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Curso $curso)
+    public function destroy(Request $request, $id)
     {
+        $curso = Curso::onlyTrashed()->find($id);
         if ($curso->forceDelete()) {
             $request->session()->flash('status', 'success');
-            $request->session()->flash('message', 'Curso removido permanentemente com sucesso!');
+            $request->session()->flash('message', 'Curso removido com sucesso!');
         } else {
             $request->session()->flash('status', 'danger');
-            $request->session()->flash('message', 'Ocorreu um erro ao remover permanentemente o curso.');
+            $request->session()->flash('message', 'Ocorreu um erro ao remover o curso.');
         }
         return redirect()->route('cursos.index');
     }
