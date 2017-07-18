@@ -1,4 +1,4 @@
-# IFRS Cursus
+# IFRS aRCA
 
 Repositório de Cursos Acadêmicos do [Instituto Federal do Rio Grande do Sul](http://ifrs.edu.br/).
 
