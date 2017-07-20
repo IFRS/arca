@@ -7,13 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('app.index') }}"><span class="glyphicon glyphicon-home"></span><span class="sr-only">In&iacute;cio</span></a>
+            <a class="navbar-brand" href="{{ route('index') }}"><span class="glyphicon glyphicon-home"></span><span class="sr-only">In&iacute;cio</span></a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
-                <li><a href="">Ofertas</a></li>
+                <li><a href="{{ route('ofertas.index') }}">Ofertas</a></li>
                 <li><a href="#">Campus</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
