@@ -1,5 +1,5 @@
 require( 'datatables.net' );
-require( 'datatables.net-bs' );
+require( 'datatables.net-bs4' );
 $(document).ready(function() {
     $('.table-cursos').DataTable({
         order:      [],

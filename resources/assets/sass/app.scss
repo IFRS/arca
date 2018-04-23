@@ -2,9 +2,10 @@
 @import "variables";
 
 // Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 //DataTables
-@import "node_modules/datatables.net-bs/css/dataTables.bootstrap";
+@import '~datatables.net-bs4/css/dataTables.bootstrap4';
 
 body {
     >.container {
@@ -20,7 +21,6 @@ body {
         }
     }
 }
-@import '~bootstrap/scss/bootstrap';
 
 form.action {
     display: inline-block;
