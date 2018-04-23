@@ -20,10 +20,10 @@ RUN apt-get update && apt-get install -qq \
 
 # Install composer & php unit
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer \
-        && curl https://phar.phpunit.de/phpunit.phar -L > phpunit.phar \
-        && chmod +x phpunit.phar \
-        && mv phpunit.phar /usr/local/bin/phpunit \
-        && phpunit --version
+      && curl https://phar.phpunit.de/phpunit.phar -L > phpunit.phar \
+      && chmod +x phpunit.phar \
+      && mv phpunit.phar /usr/local/bin/phpunit \
+      && phpunit --version
 
 # Change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
@@ -31,7 +31,8 @@ RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf; \
-	sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf;
+	sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf; \
+  a2enmod rewrite
 
 WORKDIR /var/www/html
 
