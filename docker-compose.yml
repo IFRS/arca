@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  app:
+    image: ifrs/arca:latest
+    volumes:
+      - storage:/var/www/html/storage
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+volumes:
+  db_data:
+  storage:
