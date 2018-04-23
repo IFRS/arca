@@ -2,7 +2,6 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 //DataTables
 @import "node_modules/datatables.net-bs/css/dataTables.bootstrap";
@@ -21,6 +20,7 @@ body {
         }
     }
 }
+@import '~bootstrap/scss/bootstrap';
 
 form.action {
     display: inline-block;
