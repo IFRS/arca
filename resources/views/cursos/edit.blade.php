@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <h2>Editar Curso</h2>
             <hr>
         </div>
@@ -11,7 +11,7 @@
     @include('forms.errors')
 
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             @include('forms.curso', ['submit' => 'Atualizar', 'curso' => $curso])
         </div>
     </div>

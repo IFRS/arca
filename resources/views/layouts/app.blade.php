@@ -8,7 +8,7 @@
 
         @include('partials.favicons')
 
-        <title>aRCA - Repositório de Cursos Acad&ecirc;micos</title>
+        <title>aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</title>
 
         <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
         <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
@@ -16,13 +16,13 @@
     <body>
         @stack('modals')
         <header>
-            <h1 class="sr-only">IFRS aRCA - Repositório de Cursos Acad&ecirc;micos</h1>
+            <h1 class="sr-only">IFRS aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</h1>
             @include('partials.menu')
         </header>
 
-        <section role="main" class="container">
+        <main class="container">
             @yield('content')
-        </section>
+        </main>
 
         <footer>
         </footer>
