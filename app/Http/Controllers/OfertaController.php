@@ -7,6 +7,7 @@ use App\Campus;
 use App\Curso;
 use App\Modalidade;
 use App\Nivel;
+Use App\Turno;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOferta;
 
@@ -36,12 +37,14 @@ class OfertaController extends Controller
         $cursos = Curso::all();
         $modalidades = Modalidade::all();
         $niveis = Nivel::all();
+        $turnos = Turno::orderBy('id', 'asc')->get();
         return view('ofertas.create')
             ->with('oferta', $oferta)
             ->with('campi', $campi)
             ->with('cursos', $cursos)
             ->with('modalidades', $modalidades)
             ->with('niveis', $niveis);
+            ->with('turnos', $turnos);
     }
 
     /**
