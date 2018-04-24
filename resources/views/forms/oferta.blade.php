@@ -108,7 +108,12 @@
             <legend>Informa&ccedil;&otilde;es</legend>
             <div class="form-group">
                 <label for="inputCargaHoraria">Carga Hor&aacute;ria</label>
-                <input name="carga_horaria" id="inputCargaHoraria" class="form-control{{ count($errors->get('carga_horaria')) > 0 ? ' is-invalid' : '' }}">
+                <div class="input-group">
+                    <input name="carga_horaria" id="inputCargaHoraria" class="form-control{{ count($errors->get('carga_horaria')) > 0 ? ' is-invalid' : '' }}" value="{{ old('carga_horaria', $oferta->carga_horaria) }}">
+                    <div class="input-group-append">
+                        <span class="input-group-text">horas</span>
+                    </div>
+                </div>
                 @foreach ($errors->get('carga_horaria') as $message)
                     <div class="invalid-feedback">
                         {{ $message }}
