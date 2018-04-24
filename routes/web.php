@@ -23,12 +23,12 @@ Route::delete('cursos/{curso}/delete', 'CursoController@delete')->name('cursos.d
 Route::put('cursos/{curso}/restore', 'CursoController@restore')->name('cursos.restore');
 Route::delete('cursos/{curso}/destroy', 'CursoController@destroy')->name('cursos.destroy');
 
-Route::get('ofertas', 'OfertasController@index')->name('ofertas.index');
-Route::get('ofertas/novo', 'OfertasController@novo')->name('ofertas.create');
-Route::post('ofertas', 'OfertasController@save')->name('ofertas.store');
-Route::get('ofertas/{curso}/editar', 'OfertasController@editar')->name('ofertas.edit');
-Route::put('ofertas/{curso}', 'OfertasController@save')->name('ofertas.update');
-Route::get('ofertas/lixeira', 'OfertasController@trash')->name('ofertas.trash');
-Route::delete('ofertas/{curso}/delete', 'OfertasController@delete')->name('ofertas.delete');
-Route::put('ofertas/{curso}/restore', 'OfertasController@restore')->name('ofertas.restore');
-Route::delete('ofertas/{curso}/destroy', 'OfertasController@destroy')->name('ofertas.destroy');
+Route::get('ofertas', 'OfertaController@index')->name('ofertas.index');
+Route::get('ofertas/nova', 'OfertaController@nova')->name('ofertas.create');
+Route::post('ofertas', 'OfertaController@save')->name('ofertas.store');
+Route::get('ofertas/{curso}/editar', 'OfertaController@editar')->name('ofertas.edit');
+Route::put('ofertas/{curso}', 'OfertaController@save')->name('ofertas.update');
+Route::get('ofertas/lixeira', 'OfertaController@trash')->name('ofertas.trash');
+Route::delete('ofertas/{curso}/delete', 'OfertaController@delete')->name('ofertas.delete');
+Route::put('ofertas/{curso}/restore', 'OfertaController@restore')->name('ofertas.restore');
+Route::delete('ofertas/{curso}/destroy', 'OfertaController@destroy')->name('ofertas.destroy');
