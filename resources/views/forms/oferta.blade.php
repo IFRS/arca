@@ -184,7 +184,7 @@
 
     <div class="form-row">
         <div class="col-12 col-md-6">
-            <a href="{{ url()->previous() }}" class="btn btn-default">Cancelar</a>
+            <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancelar</a>
         </div>
         <div class="col-12 col-md-6 text-right">
             <button type="submit" class="btn btn-primary">{{ $submit }}</button>
