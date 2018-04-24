@@ -35,15 +35,15 @@ class OfertaController extends Controller
         $oferta = new Oferta();
         $campi = Campus::all();
         $cursos = Curso::all();
-        $niveis = Nivel::all();
         $modalidades = Modalidade::orderBy('id', 'asc')->get();
+        $niveis_pai = Nivel::whereNull('pai_id')->get();
         $turnos = Turno::orderBy('id', 'asc')->get();
         return view('ofertas.create')
             ->with('oferta', $oferta)
             ->with('campi', $campi)
             ->with('cursos', $cursos)
             ->with('modalidades', $modalidades)
-            ->with('niveis', $niveis);
+            ->with('niveis_pai', $niveis_pai)
             ->with('turnos', $turnos);
     }
 
