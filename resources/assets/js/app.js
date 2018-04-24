@@ -10,3 +10,5 @@ require('./bootstrap');
 require('./datatables');
 
 require('./confirm');
+
+require('./oferta');
