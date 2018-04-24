@@ -20,8 +20,8 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = Oferta::with('cursos.nome', 'campi.nome', 'modalidades.nome', 'niveis.nome', 'turnos.nome')->get();
-        $ofertas_trashed = Oferta::onlyTrashed()->with('cursos.nome', 'campi.nome', 'modalidades.nome', 'niveis.nome', 'turnos.nome')->get();
+        $ofertas = Oferta::all();
+        $ofertas_trashed = Oferta::onlyTrashed()->get();
         return view('ofertas.index')->with('ofertas', $ofertas)->with('ofertas_trashed', $ofertas_trashed);
     }
 
