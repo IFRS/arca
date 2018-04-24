@@ -75,5 +75,11 @@ class NiveisTableSeeder extends Seeder
             'pai_id' => 3,
             'nome' => 'Mestrado Profissional'
         ]);
+
+        DB::table('niveis')->insert([
+            'id' => 14,
+            'pai_id' => 4,
+            'nome' => 'Extensão'
+        ]);
     }
 }
