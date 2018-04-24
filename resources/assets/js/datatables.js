@@ -1,5 +1,6 @@
 require( 'datatables.net' );
 require( 'datatables.net-bs4' );
+
 $(document).ready(function() {
     $('.table-cursos').DataTable({
         order:      [],
@@ -23,6 +24,41 @@ $(document).ready(function() {
             "sProcessing":     "Processando...",
             "sZeroRecords":    "Nenhum Curso encontrado",
             "sSearch":         "Buscar Cursos",
+            "oPaginate": {
+                "sNext":     "Próximo",
+                "sPrevious": "Anterior",
+                "sFirst":    "Primeiro",
+                "sLast":     "Último"
+            },
+            "oAria": {
+                "sSortAscending":  ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            }
+        }
+    });
+
+    $('.table-ofertas').DataTable({
+        order:      [],
+        searching:  true,
+        paging:     false,
+        info:       false,
+        bAutoWidth: true,
+        "columnDefs": [{
+            "targets":   'no-sort',
+            "orderable": false,
+        }],
+        language: {
+            "sEmptyTable":     "Nenhuma Oferta encontrado",
+            "sInfo":           "Mostrando de _START_ até _END_ de _TOTAL_ Ofertas",
+            "sInfoEmpty":      "Mostrando 0 até 0 de 0 Ofertas",
+            "sInfoFiltered":   "(Filtrados de _MAX_ Ofertas)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ".",
+            "sLengthMenu":     "_MENU_ Ofertas por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing":     "Processando...",
+            "sZeroRecords":    "Nenhum Oferta encontrada",
+            "sSearch":         "Buscar Ofertas",
             "oPaginate": {
                 "sNext":     "Próximo",
                 "sPrevious": "Anterior",
