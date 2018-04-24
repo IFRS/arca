@@ -1,5 +1,5 @@
 @if (!isset($isTrash)) {{ $isTrash = false }} @endif
-<table class="table table-striped table-cursos">
+<table class="table table-striped table-ofertas">
     <thead class="thead-light">
         <tr>
             <th>ID</th>
