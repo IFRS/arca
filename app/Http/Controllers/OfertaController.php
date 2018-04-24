@@ -82,9 +82,10 @@ class OfertaController extends Controller
         if (!$oferta->exists) {
             $oferta = new Oferta();
         }
+
         $oferta->descricao = $request->descricao;
-        $oferta->coodenador_nome = $request->coordenador_nome;
-        $oferta->coodenador_email = $request->coordenador_email;
+        $oferta->coordenador_nome = $request->coordenador_nome;
+        $oferta->coordenador_email = $request->coordenador_email;
         $oferta->coordenador_titulacao = $request->coordenador_titulacao;
         $oferta->carga_horaria = $request->carga_horaria;
         $oferta->duracao = $request->duracao;
@@ -95,6 +96,8 @@ class OfertaController extends Controller
         $oferta->campus_id = $request->campus_id;
         $oferta->modalidade_id = $request->modalidade_id;
         $oferta->nivel_id = $request->nivel_id;
+        $oferta->turnos()->sync($request->turnos_ids);
+
         if ($oferta->save()) {
             $request->session()->flash('status', 'success');
             if ($request->isMethod('PUT')) {
@@ -111,6 +114,7 @@ class OfertaController extends Controller
             }
 
         }
+
         return redirect()->route('ofertas.index');
     }
 
