@@ -18,6 +18,7 @@
             <a href="{{ route('cursos.create') }}" class="btn btn-primary float-right">Adicionar novo</a>
         </div>
     </div>
+    <hr>
     <div class="row">
         <div class="col-12">
             <ul class="nav nav-tabs" role="tablist">
