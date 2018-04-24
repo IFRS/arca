@@ -11,6 +11,7 @@
         <div class="col-12 col-md-6 form-group">
             <label for="selectCurso">Curso</label>
             <select name="curso_id" id="selectCurso" class="form-control{{ count($errors->get('curso_id')) > 0 ? ' is-invalid' : '' }}">
+                <option value="">Selecione um Curso...</option>
                 @foreach ($cursos as $curso)
                     <option value="{{ $curso->id }}"{{ (isset($oferta->curso) && $oferta->curso->id == $curso->id) ? ' selected' : '' }}>{{ $curso->nome }}</option>
                 @endforeach
@@ -24,6 +25,7 @@
         <div class="col-12 col-md-6 form-group">
             <label for="selectCampus">Campus</label>
             <select name="campus_id" id="selectCampus" class="form-control{{ count($errors->get('campus_id')) > 0 ? ' is-invalid' : '' }}">
+                <option value="">Selecione um Campus...</option>
                 @foreach ($campi as $campus)
                     <option value="{{ $campus->id }}"{{ (isset($oferta->campus) && $oferta->campus->id == $campus->id) ? ' selected' : '' }}>{{ $campus->nome }}</option>
                 @endforeach
@@ -63,6 +65,7 @@
         <div class="col-12 col-md-6 form-group">
             <label for="selectNivel">N&iacute;vel</label>
             <select name="nivel_id" id="selectNivel" class="form-control{{ count($errors->get('nivel_id')) > 0 ? ' is-invalid' : '' }}">
+                <option value="">Selecione um Nível...</option>
                 @foreach ($niveis_pai as $nivel_pai)
                     <optgroup label="{{ $nivel_pai->nome }}">
                         @foreach ($nivel_pai->filhos as $nivel)
