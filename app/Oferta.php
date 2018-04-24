@@ -62,4 +62,14 @@ class Oferta extends Model
     {
         return $this->belongsTo('App\Nivel', 'nivel_id');
     }
+
+    /**
+     * Obtém o nome da Oferta.
+     *
+     * @return string
+     */
+    public function getNomeAttribute()
+    {
+        return "{$this->curso->nome} em {$this->campus->nome}";
+    }
 }
