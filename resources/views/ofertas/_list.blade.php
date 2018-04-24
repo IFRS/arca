@@ -21,18 +21,19 @@
                     {{ $oferta->nome }}
                 @endslot
 
-                {{ $oferta->modalidade->nome }} - {{ $oferta->nivel->pai->nome }} > {{ $oferta->nivel->nome }} -
+                <p>{{ $oferta->modalidade->nome }} - {{ $oferta->nivel->pai->nome }} > {{ $oferta->nivel->nome }} -
                 @foreach ($oferta->turnos as $turno)
                     {{ $turno->nome }}
                     @if (!$loop->last)
                         {{ ', ' }}
                     @endif
                 @endforeach
+                </p>
                 <p>{{ $oferta->descricao }}</p>
                 <h4>Informa&ccedil;&otilde;es</h4>
                 <div class="row">
                     <div class="col-12 col-md-6">
-                        <p>Carga Hor&aacute;ria: {{ $oferta->carga_horaria }}</p>
+                        <p>Carga Hor&aacute;ria: {{ $oferta->carga_horaria }} horas</p>
                         <p>Dura&ccedil;&atilde;o: {{ $oferta->duracao }}</p>
                     </div>
                     <div class="col-12 col-md-6">
@@ -41,9 +42,8 @@
                     </div>
                 </div>
                 <h4>Coordenador</h4>
-                <p>{{ $oferta->coodenador_nome }}</p>
-                <p>{{ $oferta->coordenador_titulacao }}</p>
-                <a href="mailto:{{ $oferta->coodenador_email }}">{{ $oferta->coodenador_email }}</a>
+                <p>{{ $oferta->coordenador_nome }} &lt;<a href="mailto:{{ $oferta->coordenador_email }}">{{ $oferta->coordenador_email }}</a>&gt; ({{ $oferta->coordenador_titulacao }})</p>
+
                 <h4>Estrutura F&iacute;sica</h4>
                 <p>{{ $oferta->estrutura_fisica }}</p>
 
