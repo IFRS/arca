@@ -63,8 +63,12 @@
         <div class="col-12 col-md-6 form-group">
             <label for="selectNivel">N&iacute;vel</label>
             <select name="nivel_id" id="selectNivel" class="form-control{{ count($errors->get('nivel_id')) > 0 ? ' is-invalid' : '' }}">
-                @foreach ($niveis as $nivel)
-                    <option value="{{ $nivel->id }}"{{ (isset($oferta->nivel) && $oferta->nivel->id == $nivel->id) ? ' selected' : '' }}>{{ $nivel->nome }}</option>
+                @foreach ($niveis_pai as $nivel_pai)
+                    <optgroup label="{{ $nivel_pai->nome }}">
+                        @foreach ($nivel_pai->filhos as $nivel)
+                            <option value="{{ $nivel->id }}"{{ (isset($oferta->nivel) && $oferta->nivel->id == $nivel->id) ? ' selected' : '' }}>{{ $nivel->nome }}</option>
+                        @endforeach
+                    </optgroup>
                 @endforeach
             </select>
             @foreach ($errors->get('nivel_id') as $message)
