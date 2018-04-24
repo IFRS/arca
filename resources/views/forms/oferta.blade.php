@@ -129,23 +129,25 @@
                     </div>
                 @endforeach
             </div>
-            <div class="form-group">
-                <label for="inputAutorizacao">Autoriza&ccedil;&atilde;o</label>
-                <input name="autorizacao" id="inputAutorizacao" class="form-control{{ count($errors->get('autorizacao')) > 0 ? ' is-invalid' : '' }}">
-                @foreach ($errors->get('autorizacao') as $message)
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @endforeach
-            </div>
-            <div class="form-group">
-                <label for="inputNotaMEC">Nota do MEC</label>
-                <input name="nota_mec" id="inputNotaMEC" class="form-control{{ count($errors->get('nota_mec')) > 0 ? ' is-invalid' : '' }}">
-                @foreach ($errors->get('nota_mec') as $message)
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @endforeach
+            <div class="form-row">
+                <div class="col-12 col-md-8 form-group">
+                    <label for="inputAutorizacao">Autoriza&ccedil;&atilde;o</label>
+                    <input name="autorizacao" id="inputAutorizacao" class="form-control{{ count($errors->get('autorizacao')) > 0 ? ' is-invalid' : '' }}" value="{{ old('autorizacao', $oferta->autorizacao) }}">
+                    @foreach ($errors->get('autorizacao') as $message)
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-12 col-md-4 form-group">
+                    <label for="inputNotaMEC">Nota do MEC</label>
+                    <input name="nota_mec" id="inputNotaMEC" class="form-control{{ count($errors->get('nota_mec')) > 0 ? ' is-invalid' : '' }}" value="{{ old('nota_mec', $oferta->nota_mec) }}">
+                    @foreach ($errors->get('nota_mec') as $message)
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </fieldset>
         <fieldset class="col-12 col-md-6">
