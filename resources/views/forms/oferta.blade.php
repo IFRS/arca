@@ -85,7 +85,7 @@
     <div class="form-row">
         <div class="col-12 col-md-6 form-group">
             <label for="textareaDescricao">Descri&ccedil;&atilde;o</label>
-            <textarea name="descricao" rows="10" id="textareaDescricao" class="form-control{{ count($errors->get('descricao')) > 0 ? ' is-invalid' : '' }}">{{ old('descricao', $oferta->descricao) }}</textarea>
+            <textarea name="descricao" rows="10" id="textareaDescricao" class="editable form-control{{ count($errors->get('descricao')) > 0 ? ' is-invalid' : '' }}">{{ old('descricao', $oferta->descricao) }}</textarea>
             @foreach ($errors->get('descricao') as $message)
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -94,7 +94,7 @@
         </div>
         <div class="col-12 col-md-6 form-group">
             <label for="textareaEstruturaFisica">Estrutura F&iacute;sica</label>
-            <textarea name="estrutura_fisica" rows="10" id="textareaEstruturaFisica" class="form-control{{ count($errors->get('estrutura_fisica')) > 0 ? ' is-invalid' : '' }}">{{ old('estrutura_fisica', $oferta->estrutura_fisica) }}</textarea>
+            <textarea name="estrutura_fisica" rows="10" id="textareaEstruturaFisica" class="editable form-control{{ count($errors->get('estrutura_fisica')) > 0 ? ' is-invalid' : '' }}">{{ old('estrutura_fisica', $oferta->estrutura_fisica) }}</textarea>
             @foreach ($errors->get('estrutura_fisica') as $message)
                 <div class="invalid-feedback">
                     {{ $message }}

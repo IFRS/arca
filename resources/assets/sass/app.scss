@@ -16,4 +16,12 @@
 
 //Select2
 @import '~select2/dist/css/select2';
+
+//TinyMCE
+@import '~tinymce/skins/lightgray/skin.min';
+@import '~tinymce/skins/lightgray/skin.mobile.min';
+@import '~tinymce/skins/lightgray/content.min';
+@import '~tinymce/skins/lightgray/content.mobile.min';
+@import '~tinymce/skins/lightgray/content.inline.min';
+
 @import 'base';
