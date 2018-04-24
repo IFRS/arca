@@ -11,7 +11,7 @@
             @else
                 <th>Modificado em</th>
             @endif
-            <th class="text-center no-sort"><span class="glyphicon glyphicon-cog"></span><span class="sr-only">A&ccedil;&otilde;es</span></th>
+            <th class="text-center no-sort"><span class="fas fa-cogs"></span><span class="sr-only">A&ccedil;&otilde;es</span></th>
         </tr>
     </thead>
     <tbody>
