@@ -62,24 +62,26 @@
                 <td>{{ $curso->updated_at ? $curso->updated_at->format('d/m/Y h:i') : '-' }}</td>
             @endif
             <td class="text-center">
-                @if ($isTrash)
-                    <form action="{{ route('cursos.restore', $curso->id) }}" method="post" class="action restore">
-                        {{ method_field('PUT') }}
-                        {{ csrf_field() }}
-                        <button type="submit" class="btn btn-xs btn-info" title="Restaurar &quot;{{ $curso->nome }}&quot;"><span class="glyphicon glyphicon-retweet"></span><span class="sr-only">Restaurar &quot;{{ $curso->nome }}&quot;</span></button>
-                    </form>
-                @else
-                    <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-xs btn-default" title="Editar &quot;{{ $curso->nome }}&quot;"><span class="glyphicon glyphicon-edit"></span><span class="sr-only">Editar &quot;{{ $curso->nome }}&quot;</span></a>
-                @endif
-                <form action="{{ ($isTrash) ? route('cursos.destroy', $curso->id) : route('cursos.delete', $curso->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
-                    {{ method_field('DELETE') }}
-                    {{ csrf_field() }}
+                <div class="btn-group" role="group" aria-label="Ações">
                     @if ($isTrash)
-                        <button type="submit" class="btn btn-xs btn-danger" title="Remover PERMANENTEMENTE &quot;{{ $curso->nome }}&quot;"><span class="glyphicon glyphicon-remove"></span><span class="sr-only">Remover PERMANENTEMENTE &quot;{{ $curso->nome }}&quot;</span></button>
+                        <form action="{{ route('cursos.restore', $curso->id) }}" method="post" class="action restore">
+                            {{ method_field('PUT') }}
+                            {{ csrf_field() }}
+                            <button type="submit" class="btn btn-sm btn-info" title="Restaurar &quot;{{ $curso->nome }}&quot;"><i class="fas fa-undo"></i><span class="sr-only">Restaurar &quot;{{ $curso->nome }}&quot;</span></button>
+                        </form>
                     @else
-                        <button type="submit" class="btn btn-xs btn-danger" title="Enviar &quot;{{ $curso->nome }}&quot; para a lixeira"><span class="glyphicon glyphicon-trash"></span><span class="sr-only">Enviar &quot;{{ $curso->nome }}&quot; para a lixeira</span></button>
+                        <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-sm btn-secondary" title="Editar &quot;{{ $curso->nome }}&quot;"><i class="fas fa-edit"></i></a>
                     @endif
-                </form>
+                    <form action="{{ ($isTrash) ? route('cursos.destroy', $curso->id) : route('cursos.delete', $curso->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        @if ($isTrash)
+                            <button type="submit" class="btn btn-sm btn-danger" title="Remover PERMANENTEMENTE &quot;{{ $curso->nome }}&quot;"><i class="fas fa-times"></i><span class="sr-only">Remover PERMANENTEMENTE &quot;{{ $curso->nome }}&quot;</span></button>
+                        @else
+                            <button type="submit" class="btn btn-sm btn-danger" title="Enviar &quot;{{ $curso->nome }}&quot; para a lixeira"><i class="fas fa-trash-alt"></i><span class="sr-only">Enviar &quot;{{ $curso->nome }}&quot; para a lixeira</span></button>
+                        @endif
+                    </form>
+                </div>
             </td>
         </tr>
     @endforeach

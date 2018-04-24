@@ -1,10 +1,17 @@
 // Variables
-@import "variables";
+@import 'variables';
+
+// Config
+@import 'config';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 //DataTables
 @import '~datatables.net-bs4/css/dataTables.bootstrap4';
+
+//Fontawesome
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free-webfonts/scss/fa-solid';
 
 @import 'base';
