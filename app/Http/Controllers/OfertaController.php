@@ -56,7 +56,18 @@ class OfertaController extends Controller
     public function editar(Oferta $oferta)
     {
         $oferta = Oferta::find($oferta->id);
-        return view('ofertas.edit')->with('oferta', $oferta);
+        $campi = Campus::all();
+        $cursos = Curso::all();
+        $modalidades = Modalidade::orderBy('id', 'asc')->get();
+        $niveis_pai = Nivel::whereNull('pai_id')->get();
+        $turnos = Turno::orderBy('id', 'asc')->get();
+        return view('ofertas.edit')
+            ->with('oferta', $oferta)
+            ->with('campi', $campi)
+            ->with('cursos', $cursos)
+            ->with('modalidades', $modalidades)
+            ->with('niveis_pai', $niveis_pai)
+            ->with('turnos', $turnos);
     }
 
     /**
