@@ -1,6 +1,6 @@
 @if (!isset($isTrash)) {{ $isTrash = false }} @endif
-<table class="table table-hover table-cursos">
-    <thead>
+<table class="table table-striped table-cursos">
+    <thead class="thead-light">
         <tr>
             <th>ID</th>
             <th>Nome</th>
@@ -42,7 +42,7 @@
                     </ol>
                 @else
                     <div class="alert alert-info">
-                        <p>Esse Curso ainda n&atilde;o possui ofertas cadastradas.</p>
+                        Esse Curso ainda n&atilde;o possui ofertas cadastradas.
                     </div>
                 @endif
 
