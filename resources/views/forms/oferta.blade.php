@@ -122,7 +122,7 @@
             </div>
             <div class="form-group">
                 <label for="inputCuracao">Dura&ccedil;&atilde;o</label>
-                <input name="duracao" id="inputCuracao" class="form-control{{ count($errors->get('duracao')) > 0 ? ' is-invalid' : '' }}">
+                <input name="duracao" id="inputCuracao" class="form-control{{ count($errors->get('duracao')) > 0 ? ' is-invalid' : '' }}" value="{{ old('duracao', $oferta->duracao) }}">
                 @foreach ($errors->get('duracao') as $message)
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -154,7 +154,7 @@
             <legend>Coordenador</legend>
             <div class="form-group">
                 <label for="inputCoordenadorNome">Nome</label>
-                <input name="coordenador_nome" id="inputCoordenadorNome" class="form-control{{ count($errors->get('coordenador_nome')) > 0 ? ' is-invalid' : '' }}">
+                <input name="coordenador_nome" id="inputCoordenadorNome" class="form-control{{ count($errors->get('coordenador_nome')) > 0 ? ' is-invalid' : '' }}" value="{{ old('coordenador_nome', $oferta->coordenador_nome) }}">
                 @foreach ($errors->get('coordenador_nome') as $message)
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -163,7 +163,7 @@
             </div>
             <div class="form-group">
                 <label for="inputCoordenadorTitulacao">Titula&ccedil;&atilde;o</label>
-                <input name="coordenador_titulacao" id="inputCoordenadorTitulacao" class="form-control{{ count($errors->get('coordenador_titulacao')) > 0 ? ' is-invalid' : '' }}">
+                <input name="coordenador_titulacao" id="inputCoordenadorTitulacao" class="form-control{{ count($errors->get('coordenador_titulacao')) > 0 ? ' is-invalid' : '' }}" value="{{ old('coordenador_titulacao', $oferta->coordenador_titulacao) }}">
                 @foreach ($errors->get('coordenador_titulacao') as $message)
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -172,7 +172,7 @@
             </div>
             <div class="form-group">
                 <label for="inputCoordenadorEmail">E-mail</label>
-                <input name="coordenador_email" id="inputCoordenadorEmail" class="form-control{{ count($errors->get('coordenador_email')) > 0 ? ' is-invalid' : '' }}">
+                <input name="coordenador_email" id="inputCoordenadorEmail" class="form-control{{ count($errors->get('coordenador_email')) > 0 ? ' is-invalid' : '' }}" value="{{ old('coordenador_email', $oferta->coordenador_email) }}">
                 @foreach ($errors->get('coordenador_email') as $message)
                     <div class="invalid-feedback">
                         {{ $message }}
