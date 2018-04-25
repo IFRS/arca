@@ -25,6 +25,21 @@
         </main>
 
         <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-center">
+                            <a href="mailto:comunicacao@ifrs.edu.br">Departamento de Comunicação do IFRS</a>
+                            &mdash;
+                            <!-- Laravel -->
+                            <a href="https://laravel.com/" target="_blank">Desenvolvido com Laravel<span class="sr-only"> (abre uma nova p&aacute;gina)</span></a> <span class="fas fa-external-link-alt"></span>
+                            &mdash;
+                            <!-- Código-fonte -->
+                            <a href="https://github.com/IFRS/arca" target="_blank">C&oacute;digo-fonte deste sistema sob a licen&ccedil;a GPL 3.0<span class="sr-only"> (abre uma nova p&aacute;gina)</span></a> <span class="fas fa-external-link-alt"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </footer>
         @stack('scripts')
     </body>

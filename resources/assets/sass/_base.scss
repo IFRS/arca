@@ -2,6 +2,20 @@ header {
     margin-bottom: $grid-gutter-width;
 }
 
+footer {
+    background-color: #f5f5f5;
+    font-size: 0.7rem;
+    margin-top: $grid-gutter-width * 2;
+
+    a {
+        color: #000000;
+    }
+
+    p {
+        margin: 10px 0;
+    }
+}
+
 .dataTables_wrapper {
     margin-top: 0.5rem;
 }
