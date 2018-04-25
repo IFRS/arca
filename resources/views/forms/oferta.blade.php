@@ -113,12 +113,12 @@
                     <div class="input-group-append">
                         <span class="input-group-text">horas</span>
                     </div>
+                    @foreach ($errors->get('carga_horaria') as $message)
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @endforeach
                 </div>
-                @foreach ($errors->get('carga_horaria') as $message)
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @endforeach
             </div>
             <div class="form-group">
                 <label for="inputCuracao">Dura&ccedil;&atilde;o</label>
