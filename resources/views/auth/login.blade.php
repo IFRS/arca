@@ -5,18 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                <div class="card-header">
+                    Login
+                </div>
                 <div class="card-body">
+                    {{ dd(Adldap::search()->users()->find('01049630009')) }}
                     <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
+                        {{ csrf_field() }}
                         <div class="form-group row">
-                            <label for="inputUsername" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
+                            <label for="inputUsername" class="col-sm-4 col-form-label text-md-right">Usu&aacute;rio</label>
                             <div class="col-md-6">
                                 <input id="inputUsername" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
-
                                 @if ($errors->has('username'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('username') }}</strong>
@@ -26,11 +25,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
+                            <label for="inputPassword" class="col-md-4 col-form-label text-md-right">Senha</label>
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                                <input id="inputPassword" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -40,20 +37,17 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
+                            <div class="col-md-3 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="checkboxRemember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="checkboxRemember">Lembrar-me</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                                <button type="submit" class="btn btn-primary">Entrar</button>
                             </div>
                         </div>
                     </form>
