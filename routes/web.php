@@ -31,6 +31,11 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('ofertas/{oferta}/delete', 'OfertaController@delete')->name('ofertas.delete');
     Route::put('ofertas/{oferta}/restore', 'OfertaController@restore')->name('ofertas.restore');
     Route::delete('ofertas/{oferta}/destroy', 'OfertaController@destroy')->name('ofertas.destroy');
+
+    Route::get('campi', 'InfoController@campi')->name('campi.index');
+    Route::get('modalidades', 'InfoController@modalidades')->name('modalidades.index');
+    Route::get('niveis', 'InfoController@niveis')->name('niveis.index');
+    Route::get('turnos', 'InfoController@turnos')->name('turnos.index');
 });
 
 Auth::routes();
