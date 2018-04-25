@@ -16,8 +16,12 @@
     <body>
         @stack('modals')
         <header>
-            <h1 class="sr-only">IFRS aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</h1>
-            @include('partials.menu')
+            @if (Auth::check())
+                <h1 class="sr-only">aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</h1>
+                @include('partials.menu')
+            @else
+                <h1 class="text-center mt-3">aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</h1>
+            @endif
         </header>
 
         <main class="container">
