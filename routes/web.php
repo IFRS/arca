@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('modalidades', 'InfoController@modalidades')->name('modalidades.index');
     Route::get('niveis', 'InfoController@niveis')->name('niveis.index');
     Route::get('turnos', 'InfoController@turnos')->name('turnos.index');
+
+    Route::get('sobre', 'SobreController@index')->name('sobre.index');
 });
 
 Auth::routes();
