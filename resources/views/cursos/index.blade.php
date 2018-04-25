@@ -15,7 +15,7 @@
             <h2>Cursos</h2>
         </div>
         <div class="col-12 col-md-2">
-            <a href="{{ route('cursos.create') }}" class="btn btn-primary float-right">Adicionar novo</a>
+            <a href="{{ route('cursos.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i>&nbsp;Adicionar novo</a>
         </div>
     </div>
     <hr>
