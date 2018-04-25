@@ -3,19 +3,21 @@ FROM php:7.2-apache
 # Install PHP extensions & cron & git & unzip
 RUN apt-get update && apt-get install -qq \
       libicu-dev \
-      libpq-dev \
+      libldap2-dev \
       libmcrypt-dev \
+      libpq-dev \
       zlib1g-dev \
-      rsyslog \
       git \
+      rsyslog \
       unzip \
     && rm -r /var/lib/apt/lists/* \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
     && docker-php-ext-install \
       intl \
+      ldap \
       mbstring \
-      pdo_mysql \
       opcache \
+      pdo_mysql \
       zip
 
 # Install composer & php unit
