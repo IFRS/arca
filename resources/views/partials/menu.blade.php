@@ -9,25 +9,25 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
+            <li class="nav-item{{ Request::is('cursos') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item{{ Request::is('ofertas') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('ofertas.index') }}">Ofertas</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Informa&ccedil;&otilde;es
+                <a class="nav-link dropdown-toggle{{ (Request::is('campi') || Request::is('modalidades') || Request::is('niveis') || Request::is('turnos')) ? ' active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dados
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Campi</a>
-                    <a class="dropdown-item" href="#">Modalidades</a>
-                    <a class="dropdown-item" href="#">Níveis</a>
-                    <a class="dropdown-item" href="#">Turnos</a>
+                    <a class="dropdown-item{{ Request::is('campi') ? ' active' : '' }}" href="{{ route('campi.index') }}">Campi</a>
+                    <a class="dropdown-item{{ Request::is('modalidades') ? ' active' : '' }}" href="{{ route('modalidades.index') }}">Modalidades</a>
+                    <a class="dropdown-item{{ Request::is('niveis') ? ' active' : '' }}" href="{{ route('niveis.index') }}">Níveis</a>
+                    <a class="dropdown-item{{ Request::is('turnos') ? ' active' : '' }}" href="{{ route('turnos.index') }}">Turnos</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+            <li class="nav-item{{ Request::is('sobre') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('sobre.index') }}">Sobre</a>
             </li>
         </ul>
         <form id="logout-form" action="{{ route('logout') }}" method="POST">
