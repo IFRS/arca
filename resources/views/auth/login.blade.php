@@ -9,7 +9,7 @@
                     Login
                 </div>
                 <div class="card-body">
-                    {{ dd(Adldap::search()->users()->find('01049630009')) }}
+
                     <form method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group row">
