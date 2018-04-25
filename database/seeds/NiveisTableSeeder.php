@@ -79,7 +79,7 @@ class NiveisTableSeeder extends Seeder
         DB::table('niveis')->insert([
             'id' => 14,
             'pai_id' => 4,
-            'nome' => 'Extensão'
+            'nome' => 'Curso de Extensão'
         ]);
     }
 }
