@@ -39,8 +39,8 @@
     </div>
 
     <div class="form-row">
-        <div class="col-12 col-md-3">
-            <strong>Modalidade</strong>
+        <fieldset class="col-12 col-md-3">
+            <legend>Modalidade</legend>
             @foreach ($modalidades as $modalidade)
                 <div class="form-check">
                     <input name="modalidade_id" value="{{ $modalidade->id }}" type="radio" class="form-check-input" id="radioModalidade{{ $modalidade->id }}"{{ (isset($oferta->modalidade) && $oferta->modalidade->id == $modalidade->id) ? ' checked' : '' }}>
@@ -52,16 +52,16 @@
                     {{ $message }}
                 </div>
             @endforeach
-        </div>
-        <div class="col-12 col-md-3">
-            <strong>Turnos</strong>
+        </fieldset>
+        <fieldset class="col-12 col-md-3">
+            <legend>Turnos</legend>
             @foreach ($turnos as $turno)
                 <div class="form-check">
                     <input name="turnos_ids" value="{{ $turno->id }}" type="checkbox" class="form-check-input" id="checkTurno{{ $turno->id }}"{{ (isset($oferta->turnos) && $oferta->turnos->contains($turno->id)) ? ' checked' : '' }}>
                     <label for="checkTurno{{ $turno->id }}" class="form-check-label">{{ $turno->nome }}</label>
                 </div>
             @endforeach
-        </div>
+        </fieldset>
         <div class="col-12 col-md-6 form-group">
             <label for="selectNivel">N&iacute;vel</label>
             <select name="nivel_id" id="selectNivel" class="form-control{{ count($errors->get('nivel_id')) > 0 ? ' is-invalid' : '' }}">
