@@ -96,14 +96,24 @@ class OfertaController extends Controller
         $oferta->campus_id = $request->campus_id;
         $oferta->modalidade_id = $request->modalidade_id;
         $oferta->nivel_id = $request->nivel_id;
-        $oferta->turnos()->sync($request->turnos_ids);
 
         if ($oferta->save()) {
+            $turnos_sync = $oferta->turnos()->sync($request->turnos_ids);
+
             $request->session()->flash('status', 'success');
             if ($request->isMethod('PUT')) {
                 $request->session()->flash('message', 'Oferta atualizada com sucesso!');
             } else {
                 $request->session()->flash('message', 'Oferta cadastrada com sucesso!');
+            }
+
+            if (!$turnos_sync) {
+                $request->session()->flash('status', 'warning');
+                if ($request->isMethod('PUT')) {
+                    $request->session()->flash('message', 'Oferta atualizada, porém ocorreu um erro ao salvar os turnos. Por favor, edite novamente.');
+                } else {
+                    $request->session()->flash('message', 'Oferta cadastrada, porém ocorreu um erro ao salvar os turnos. Por favor, edite a oferta.');
+                }
             }
         } else {
             $request->session()->flash('status', 'danger');
@@ -112,7 +122,6 @@ class OfertaController extends Controller
             } else {
                 $request->session()->flash('message', 'Ocorreu um erro ao cadastrar a oferta.');
             }
-
         }
 
         return redirect()->route('ofertas.index');
