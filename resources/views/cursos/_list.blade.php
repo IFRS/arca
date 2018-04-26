@@ -30,13 +30,10 @@
                         <h4>Ofertas <span class="badge badge-primary">{{ count($curso->ofertas) }}</span></h4>
                         <ol>
                         @foreach ($curso->ofertas as $oferta)
-                            <li>
-                                <strong>{{ $oferta->campus->nome }}:</strong> {{ $oferta->modalidade->nome }} - {{ $oferta->nivel->pai->nome }} > {{ $oferta->nivel->nome }} -
+                            <li class="mb-1">
+                                <strong>{{ $oferta->campus->nome }}:</strong> {{ $oferta->modalidade->nome }} &mdash; {{ $oferta->nivel->pai->nome }} <i class="fas fa-arrow-right"></i> {{ $oferta->nivel->nome }} &mdash;
                             @foreach ($oferta->turnos as $turno)
-                                {{ $turno->nome }}
-                                @if (!$loop->last)
-                                    {{ ', ' }}
-                                @endif
+                                {{ $turno->nome }}@if (!$loop->last){{ ', ' }}@endif
                             @endforeach
                             </li>
                         @endforeach

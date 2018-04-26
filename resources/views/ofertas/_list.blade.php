@@ -22,13 +22,11 @@
                         {{ $oferta->nome }}
                     @endslot
 
-                    <p>{{ $oferta->modalidade->nome }} - {{ $oferta->nivel->pai->nome }} > {{ $oferta->nivel->nome }} -
-                    @foreach ($oferta->turnos as $turno)
-                        {{ $turno->nome }}
-                        @if (!$loop->last)
-                            {{ ', ' }}
-                        @endif
-                    @endforeach
+                    <p>
+                        {{ $oferta->modalidade->nome }} &mdash; {{ $oferta->nivel->pai->nome }} <i class="fas fa-arrow-right"></i> {{ $oferta->nivel->nome }} &mdash;
+                        @foreach ($oferta->turnos as $turno)
+                            {{ $turno->nome }}@if (!$loop->last){{ ', ' }}@endif
+                        @endforeach
                     </p>
                     <p>{!! $oferta->descricao !!}</p>
                     <h4>Informa&ccedil;&otilde;es</h4>
