@@ -5,6 +5,8 @@
             <tr>
                 <th>ID</th>
                 <th>Oferta</th>
+                <th>N&iacute;vel</th>
+                <th>Turnos</th>
                 <th>Criado em</th>
                 @if ($isTrash)
                     <th>Deletado em</th>
@@ -54,6 +56,12 @@
             <tr>
                 <td>{{ $oferta->id }}</td>
                 <td><a href="#modal-oferta-{{ $oferta->id }}" data-toggle="modal">{{ $oferta->nome }}</a></td>
+                <td>{{ $oferta->nivel->pai->nome }} <i class="fas fa-arrow-right"></i> {{ $oferta->nivel->nome }}</td>
+                <td>
+                    @foreach ($oferta->turnos as $turno)
+                        {{ $turno->nome }}@if (!$loop->last){{ ', ' }}@endif
+                    @endforeach
+                </td>
                 <td>{{ $oferta->created_at ? $oferta->created_at->format('d/m/Y h:i'): '-' }}</td>
                 @if ($isTrash)
                     <td>{{ $oferta->deleted_at ? $oferta->deleted_at->format('d/m/Y h:i') : '-' }}</td>
