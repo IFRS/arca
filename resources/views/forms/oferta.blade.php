@@ -57,7 +57,7 @@
             <legend>Turnos</legend>
             @foreach ($turnos as $turno)
                 <div class="form-check">
-                    <input name="turnos_ids" value="{{ $turno->id }}" type="checkbox" class="form-check-input" id="checkTurno{{ $turno->id }}"{{ (isset($oferta->turnos) && $oferta->turnos->contains($turno->id)) ? ' checked' : '' }}>
+                    <input name="turnos_ids[]" value="{{ $turno->id }}" type="checkbox" class="form-check-input" id="checkTurno{{ $turno->id }}"{{ (isset($oferta->turnos) && $oferta->turnos->contains($turno->id)) ? ' checked' : '' }}>
                     <label for="checkTurno{{ $turno->id }}" class="form-check-label">{{ $turno->nome }}</label>
                 </div>
             @endforeach
