@@ -23,9 +23,9 @@
                         {{ $curso->nome }}
                     @endslot
 
-                    <p>{{ $curso->apresentacao }}</p>
+                    <p>{!! $curso->apresentacao !!}</p>
                     <h4>&Aacute;rea de Atua&ccedil;&atilde;o</h4>
-                    <p>{{ $curso->atuacao }}</p>
+                    <p>{!! $curso->atuacao !!}</p>
                     @if (count($curso->ofertas) > 0)
                         <h4>Ofertas <span class="badge badge-primary">{{ count($curso->ofertas) }}</span></h4>
                         <ol>

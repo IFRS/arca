@@ -30,7 +30,7 @@
                         @endif
                     @endforeach
                     </p>
-                    <p>{{ $oferta->descricao }}</p>
+                    <p>{!! $oferta->descricao !!}</p>
                     <h4>Informa&ccedil;&otilde;es</h4>
                     <div class="row">
                         <div class="col-12 col-md-6">
@@ -46,7 +46,7 @@
                     <p>{{ $oferta->coordenador_nome }} &lt;<a href="mailto:{{ $oferta->coordenador_email }}">{{ $oferta->coordenador_email }}</a>&gt; ({{ $oferta->coordenador_titulacao }})</p>
 
                     <h4>Estrutura F&iacute;sica</h4>
-                    <p>{{ $oferta->estrutura_fisica }}</p>
+                    <p>{!! $oferta->estrutura_fisica !!}</p>
 
                     @slot('footer')
                         <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
