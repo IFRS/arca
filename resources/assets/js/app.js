@@ -14,3 +14,5 @@ require('./confirm');
 require('./oferta');
 
 require('./tinymce');
+
+require('./files');
