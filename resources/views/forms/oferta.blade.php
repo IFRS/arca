@@ -1,8 +1,8 @@
 @if ($oferta->id)
-    <form action="{{ route('ofertas.update', $oferta->id) }}" method="post">
+    <form action="{{ route('ofertas.update', $oferta->id) }}" method="POST" enctype="multipart/form-data">
         {{ method_field('PUT') }}
 @else
-    <form action="{{ route('ofertas.store') }}" method="post">
+    <form action="{{ route('ofertas.store') }}" method="POST" enctype="multipart/form-data">
         {{ method_field('POST') }}
 @endif
     {{ csrf_field() }}
@@ -180,6 +180,15 @@
                 @endforeach
             </div>
         </fieldset>
+    </div>
+
+    <div class="form-row">
+        <div class="col-12 col-md-6">
+
+        </div>
+        <div class="col-12 col-md-6">
+            @include('forms._files')
+        </div>
     </div>
 
     <div class="form-row">
