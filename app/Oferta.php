@@ -64,6 +64,14 @@ class Oferta extends Model
     }
 
     /**
+     * Obtém os Arquivos da Oferta.
+     */
+    public function arquivos()
+    {
+        return $this->hasMany('App\OfertaArquivos', 'oferta_id');
+    }
+
+    /**
      * Obtém o nome da Oferta.
      *
      * @return string
