@@ -39,9 +39,9 @@
                         @endforeach
                         </ol>
                     @else
-                        <div class="alert alert-info">
+                        @component('components.alert', ['status' => 'info', 'dismissable' => false])
                             Esse Curso ainda n&atilde;o possui ofertas cadastradas.
-                        </div>
+                        @endcomponent
                     @endif
 
                     @slot('footer')
