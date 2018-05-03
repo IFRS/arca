@@ -23,7 +23,7 @@ class StoreOferta extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             'descricao' => 'required|string|max:65500',
             'coordenador_nome' => 'required|string|max:255',
             'coordenador_email' => 'required|string|max:255',
@@ -38,6 +38,19 @@ class StoreOferta extends FormRequest
             'modalidade_id' => 'required',
             'nivel_id' => 'required',
         ];
+
+        if ($this->file('file')) {
+            foreach (range(0, count($this->file('file'))) as $index) {
+                $rules['file.' . $index] = 'file|mimes:pdf,doc,docx|max:10000';
+            }
+            if ($this->input('file_title')) {
+                foreach (range(0, count($this->input('file_title'))) as $index) {
+                    $rules['file_title.' . $index] = 'string|max:255';
+                }
+            }
+        }
+
+        return $rules;
     }
 
     /**
@@ -86,7 +99,7 @@ class StoreOferta extends FormRequest
 
             'curso_id.required' => 'O Curso é obrigatório',
             'campus_id.required' => 'O Campus é obrigatório',
-            'modalidade_id.required' => 'A Modalidade é obrigatório',
+            'modalidade_id.required' => 'A Modalidade é obrigatória',
             'nivel_id.required' => 'O Nível é obrigatório',
         ];
     }
