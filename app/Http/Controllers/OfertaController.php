@@ -7,7 +7,8 @@ use App\Campus;
 use App\Curso;
 use App\Modalidade;
 use App\Nivel;
-Use App\Turno;
+use App\Turno;
+use App\OfertaArquivos;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOferta;
 
@@ -99,6 +100,17 @@ class OfertaController extends Controller
 
         if ($oferta->save()) {
             $turnos_sync = $oferta->turnos()->sync($request->turnos_ids);
+
+            if ($request->file) {
+                foreach ($request->file as $index => $arquivo) {
+                    $filename = $arquivo->store('arquivos');
+                    OfertaArquivos::create([
+                        'nome' => $request->file_title[$index],
+                        'arquivo' => $filename,
+                        'oferta_id' => $oferta->id
+                    ]);
+                }
+            }
 
             $request->session()->flash('status', 'success');
             if ($request->isMethod('PUT')) {
