@@ -23,7 +23,7 @@ class StoreOferta extends FormRequest
      */
     public function rules()
     {
-        $rules = [
+        return [
             'descricao' => 'required|string|max:65500',
             'coordenador_nome' => 'required|string|max:255',
             'coordenador_email' => 'required|string|max:255',
@@ -38,19 +38,6 @@ class StoreOferta extends FormRequest
             'modalidade_id' => 'required',
             'nivel_id' => 'required',
         ];
-
-        if ($this->file('file')) {
-            foreach (range(0, count($this->file('file'))) as $index) {
-                $rules['file.' . $index] = 'file|mimes:pdf,doc,docx|max:10000';
-            }
-            if ($this->input('file_title')) {
-                foreach (range(0, count($this->input('file_title'))) as $index) {
-                    $rules['file_title.' . $index] = 'string|max:255';
-                }
-            }
-        }
-
-        return $rules;
     }
 
     /**
