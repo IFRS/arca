@@ -69,26 +69,25 @@
                     <td>{{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y h:i') : '-' }}</td>
                 @endif
                 <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Ações">
-                        @if ($isTrash)
-                            <form action="{{ route('ofertas.restore', $oferta->id) }}" method="post" class="action restore">
-                                {{ method_field('PUT') }}
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-sm btn-info" title="Restaurar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-undo"></i><span class="sr-only">Restaurar &quot;{{ $oferta->nome }}&quot;</span></button>
-                            </form>
-                        @else
-                            <a href="{{ route('ofertas.edit', $oferta->id) }}" class="btn btn-sm btn-secondary" title="Editar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-edit"></i></a>
-                        @endif
-                        <form action="{{ ($isTrash) ? route('ofertas.destroy', $oferta->id) : route('ofertas.delete', $oferta->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
-                            {{ method_field('DELETE') }}
+                    @if ($isTrash)
+                        <form action="{{ route('ofertas.restore', $oferta->id) }}" method="post" class="action restore">
+                            {{ method_field('PUT') }}
                             {{ csrf_field() }}
-                            @if ($isTrash)
-                                <button type="submit" class="btn btn-sm btn-danger" title="Remover PERMANENTEMENTE &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-times"></i><span class="sr-only">Remover PERMANENTEMENTE &quot;{{ $oferta->nome }}&quot;</span></button>
-                            @else
-                                <button type="submit" class="btn btn-sm btn-danger" title="Enviar &quot;{{ $oferta->nome }}&quot; para a lixeira"><i class="fas fa-trash-alt"></i><span class="sr-only">Enviar &quot;{{ $oferta->nome }}&quot; para a lixeira</span></button>
-                            @endif
+                            <button type="submit" class="btn btn-sm btn-info" title="Restaurar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-undo"></i><span class="sr-only">Restaurar &quot;{{ $oferta->nome }}&quot;</span></button>
                         </form>
-                    </div>
+                    @else
+                        <a href="{{ route('ofertas.edit', $oferta->id) }}" class="btn btn-sm btn-secondary" title="Editar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ route('ofertas.arquivos', $oferta->id) }}" class="btn btn-sm btn-info" title="Gerenciar Arquivos de &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-file-alt"></i></a>
+                    @endif
+                    <form class="d-inline" action="{{ ($isTrash) ? route('ofertas.destroy', $oferta->id) : route('ofertas.delete', $oferta->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        @if ($isTrash)
+                            <button type="submit" class="btn btn-sm btn-danger" title="Remover PERMANENTEMENTE &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-times"></i><span class="sr-only">Remover PERMANENTEMENTE &quot;{{ $oferta->nome }}&quot;</span></button>
+                        @else
+                            <button type="submit" class="btn btn-sm btn-danger" title="Enviar &quot;{{ $oferta->nome }}&quot; para a lixeira"><i class="fas fa-trash-alt"></i><span class="sr-only">Enviar &quot;{{ $oferta->nome }}&quot; para a lixeira</span></button>
+                        @endif
+                    </form>
                 </td>
             </tr>
         @endforeach
