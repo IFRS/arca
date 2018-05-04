@@ -48,6 +48,10 @@
                     <h4>Estrutura F&iacute;sica</h4>
                     <p>{!! $oferta->estrutura_fisica !!}</p>
 
+                    <div class="text-center">
+                        <a href="{{ route('ofertas.arquivos', $oferta->id) }}" class="btn btn-info" title="Gerenciar Arquivos de &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-file-alt"></i>&nbsp;Gerenciar Arquivos</a>
+                    </div>
+
                     @slot('footer')
                         <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
                     @endslot
