@@ -11,6 +11,8 @@ use App\Turno;
 use App\OfertaArquivo;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOferta;
+use App\Http\Requests\StoreOfertaArquivo;
+use Illuminate\Support\Facades\Storage;
 
 class OfertaController extends Controller
 {
@@ -101,17 +103,6 @@ class OfertaController extends Controller
         if ($oferta->save()) {
             $turnos_sync = $oferta->turnos()->sync($request->turnos_ids);
 
-            if ($request->file) {
-                foreach ($request->file as $index => $arquivo) {
-                    $filename = $arquivo->store('arquivos');
-                    OfertaArquivos::create([
-                        'nome' => $request->file_title[$index],
-                        'arquivo' => $filename,
-                        'oferta_id' => $oferta->id
-                    ]);
-                }
-            }
-
             $request->session()->flash('status', 'success');
             if ($request->isMethod('PUT')) {
                 $request->session()->flash('message', 'Oferta atualizada com sucesso!');
@@ -137,6 +128,71 @@ class OfertaController extends Controller
         }
 
         return redirect()->route('ofertas.index');
+    }
+
+    /**
+     * Mostra os arquivos de uma Oferta já existente e o formulário para adição de um novo arquivo.
+     *
+     * @param  \App\Oferta  $oferta
+     * @return \Illuminate\Http\Response
+     */
+    public function arquivos(Oferta $oferta)
+    {
+        $oferta = Oferta::find($oferta->id);
+        return view('ofertas.arquivos')
+            ->with('oferta', $oferta);
+    }
+
+    /**
+     * Salva um Arquivo novo.
+     *
+     * @param  \App\Http\Requests\StoreOfertaArquivo  $request
+     * @param  \App\Oferta  $oferta
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(StoreOfertaArquivo $request, Oferta $oferta)
+    {
+        if ($request->hasFile('arquivo')) {
+            $filename = $request->arquivo->store('arquivos');
+
+            $arquivo = new OfertaArquivo();
+            $arquivo->nome = $request->arquivo_titulo;
+            $arquivo->arquivo = $filename;
+            $arquivo->oferta_id = $oferta->id;
+
+            if ($arquivo->save()) {
+                $request->session()->flash('status', 'success');
+                $request->session()->flash('message', 'Arquivo enviado com sucesso!');
+            } else {
+                $request->session()->flash('status', 'danger');
+                $request->session()->flash('message', 'Ocorreu um erro ao enviar o arquivo.');
+            }
+        }
+
+        return redirect()->route('ofertas.arquivos', $oferta->id);
+    }
+
+    /**
+     * Remove PERMANENTEMENTE a Oferta.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\OfertaArquivo  $arquivo
+     * @return \Illuminate\Http\Response
+     */
+    public function arquivo_destroy(Request $request, Oferta $oferta, OfertaArquivo $arquivo)
+    {
+        $filename = $arquivo->arquivo;
+
+        if ($arquivo->delete()) {
+            Storage::delete($filename);
+            $request->session()->flash('status', 'success');
+            $request->session()->flash('message', 'Arquivo excluido com sucesso!');
+        } else {
+            $request->session()->flash('status', 'danger');
+            $request->session()->flash('message', 'Ocorreu um erro ao excluir o arquivo.');
+        }
+
+        return redirect()->route('ofertas.arquivos', $oferta->id);
     }
 
     /**

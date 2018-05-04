@@ -28,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('ofertas', 'OfertaController@save')->name('ofertas.store');
     Route::get('ofertas/{oferta}/editar', 'OfertaController@editar')->name('ofertas.edit');
     Route::put('ofertas/{oferta}', 'OfertaController@save')->name('ofertas.update');
+    Route::get('ofertas/{oferta}/arquivos', 'OfertaController@arquivos')->name('ofertas.arquivos');
+    Route::post('ofertas/{oferta}/upload', 'OfertaController@upload')->name('ofertas.upload');
+    Route::delete('ofertas/{oferta}/arquivos/{arquivo}', 'OfertaController@arquivo_destroy')->name('ofertas.arquivo_destroy');
     Route::delete('ofertas/{oferta}/delete', 'OfertaController@delete')->name('ofertas.delete');
     Route::put('ofertas/{oferta}/restore', 'OfertaController@restore')->name('ofertas.restore');
     Route::delete('ofertas/{oferta}/destroy', 'OfertaController@destroy')->name('ofertas.destroy');
@@ -37,7 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('niveis', 'InfoController@niveis')->name('niveis.index');
     Route::get('turnos', 'InfoController@turnos')->name('turnos.index');
 
-    Route::get('sobre', 'SobreController@index')->name('sobre.index');
+    Route::get('sobre', function() {
+        return view('info.sobre');
+    })->name('sobre.index');
 });
 
 Auth::routes();

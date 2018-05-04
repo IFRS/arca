@@ -71,4 +71,39 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('.table-arquivos').DataTable({
+        order:      [],
+        searching:  false,
+        paging:     false,
+        info:       false,
+        bAutoWidth: true,
+        "columnDefs": [{
+            "targets":   'no-sort',
+            "orderable": false,
+        }],
+        language: {
+            "sEmptyTable":     "Nenhum Arquivo encontrado",
+            "sInfo":           "Mostrando de _START_ até _END_ de _TOTAL_ Arquivos",
+            "sInfoEmpty":      "Mostrando 0 até 0 de 0 Arquivos",
+            "sInfoFiltered":   "(Filtrados de _MAX_ Arquivos)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ".",
+            "sLengthMenu":     "_MENU_ Arquivos por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing":     "Processando...",
+            "sZeroRecords":    "Nenhum Arquivo encontrado",
+            "sSearch":         "Buscar Arquivos",
+            "oPaginate": {
+                "sNext":     "Próximo",
+                "sPrevious": "Anterior",
+                "sFirst":    "Primeiro",
+                "sLast":     "Último"
+            },
+            "oAria": {
+                "sSortAscending":  ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            }
+        }
+    });
 });
