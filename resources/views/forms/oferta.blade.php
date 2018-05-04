@@ -184,43 +184,6 @@
 
     <div class="form-row">
         <div class="col-12 col-md-6">
-            <fieldset>
-                <legend class="mb-3">Arquivos</legend>
-                @if (count($oferta->arquivos) > 0)
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Enviado em</th>
-                                <th class="text-center no-sort"><span class="fas fa-cogs"></span><span class="sr-only">A&ccedil;&otilde;es</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($oferta->arquivos as $arquivo)
-                                <tr>
-                                    <td>{{ $arquivo->id }}</td>
-                                    <td><a href="{{ Storage::url($arquivo->arquivo) }}">{{ $arquivo->nome }}</a></td>
-                                    <td>{{ $arquivo->created_at ? $curso->created_at->format('d/m/Y h:i') : '-' }}</td>
-                                    <td></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                @else
-                    @component('components.alert', ['status' => 'info', 'dismissable' => false])
-                        Ainda n&atilde;o foram anexados arquivos a essa oferta.
-                    @endcomponent
-                @endif
-            </fieldset>
-        </div>
-        <div class="col-12 col-md-6">
-            @include('forms._files')
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="col-12 col-md-6">
             <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancelar</a>
         </div>
         <div class="col-12 col-md-6 text-right">
