@@ -38,12 +38,12 @@
                 <tbody>
                     @foreach ($oferta->arquivos as $arquivo)
                         <tr>
-                            <td><a href="{{ Storage::url($arquivo->arquivo) }}">{{ $arquivo->nome }}</a></td>
-                            <td>{{ Storage::url($arquivo->arquivo) }}</td>
-                            <td>{{ Storage::mimeType($arquivo->arquivo) }}</td>
-                            <td>{{ round(Storage::size($arquivo->arquivo) / 1000) }}&nbsp;Kb</td>
-                            <td>{{ $arquivo->created_at ? $arquivo->created_at->format('d/m/Y h:i') : '-' }}</td>
-                            <td>
+                            <td class="align-middle"><a href="{{ Storage::url($arquivo->arquivo) }}">{{ $arquivo->nome }}</a></td>
+                            <td class="align-middle">{{ Storage::url($arquivo->arquivo) }}</td>
+                            <td class="align-middle">{{ Storage::mimeType($arquivo->arquivo) }}</td>
+                            <td class="align-middle">{{ round(Storage::size($arquivo->arquivo) / 1000) }}&nbsp;Kb</td>
+                            <td class="align-middle">{{ $arquivo->created_at ? $arquivo->created_at->format('d/m/Y h:i') : '-' }}</td>
+                            <td class="align-middle">
                                 <form action="{{ route('ofertas.arquivo_destroy', [$oferta->id, $arquivo->id]) }}" method="POST" class="action destroy">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
