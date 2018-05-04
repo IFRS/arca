@@ -48,7 +48,7 @@ $(document).ready(function() {
             "orderable": false,
         }],
         language: {
-            "sEmptyTable":     "Nenhuma Oferta encontrado",
+            "sEmptyTable":     "Nenhuma Oferta encontrada",
             "sInfo":           "Mostrando de _START_ até _END_ de _TOTAL_ Ofertas",
             "sInfoEmpty":      "Mostrando 0 até 0 de 0 Ofertas",
             "sInfoFiltered":   "(Filtrados de _MAX_ Ofertas)",
