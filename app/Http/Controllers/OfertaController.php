@@ -8,7 +8,7 @@ use App\Curso;
 use App\Modalidade;
 use App\Nivel;
 use App\Turno;
-use App\OfertaArquivos;
+use App\OfertaArquivo;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreOferta;
 

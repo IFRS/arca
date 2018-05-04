@@ -68,7 +68,7 @@ class Oferta extends Model
      */
     public function arquivos()
     {
-        return $this->hasMany('App\OfertaArquivos', 'oferta_id');
+        return $this->hasMany('App\OfertaArquivo', 'oferta_id');
     }
 
     /**
