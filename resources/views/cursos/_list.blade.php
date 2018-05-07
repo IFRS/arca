@@ -27,7 +27,7 @@
                     <h4>&Aacute;rea de Atua&ccedil;&atilde;o</h4>
                     <p>{!! $curso->atuacao !!}</p>
                     @if (count($curso->ofertas) > 0)
-                        <h4>Ofertas <span class="badge badge-primary">{{ count($curso->ofertas) }}</span></h4>
+                        <h4>Ofertas</span></h4>
                         <ol>
                         @foreach ($curso->ofertas as $oferta)
                             <li class="mb-1">
