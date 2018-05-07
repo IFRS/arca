@@ -5,6 +5,7 @@
             <tr>
                 <th>ID</th>
                 <th>Oferta</th>
+                <th>Modalidade</th>
                 <th>N&iacute;vel</th>
                 <th>Turnos</th>
                 <th>Criado em</th>
@@ -60,6 +61,7 @@
             <tr>
                 <td>{{ $oferta->id }}</td>
                 <td><a href="#modal-oferta-{{ $oferta->id }}" data-toggle="modal">{{ $oferta->nome }}</a></td>
+                <td>{{ $oferta->modalidade->nome }}</td>
                 <td>{{ $oferta->nivel->pai->nome }} <i class="fas fa-arrow-right"></i> {{ $oferta->nivel->nome }}</td>
                 <td>
                     @foreach ($oferta->turnos as $turno)
