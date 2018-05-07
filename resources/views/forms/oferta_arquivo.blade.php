@@ -7,7 +7,7 @@
         <div class="form-row" id="collapseNovoArquivo">
             <div class="col-12 col-md-5">
                 <label for="inputArquivoTitulo" class="sr-only">T&iacute;tulo do arquivo</label>
-                <input id="inputArquivoTitulo" type="text" name="arquivo_titulo" class="form-control{{ count($errors->get('arquivo_titulo')) > 0 ? ' is-invalid' : '' }}" placeholder="Título">
+                <input id="inputArquivoTitulo" type="text" name="arquivo_titulo" class="form-control{{ count($errors->get('arquivo_titulo')) > 0 ? ' is-invalid' : '' }}" placeholder="Título" value="{{ old('arquivo_titulo') }}">
                 @foreach ($errors->get('arquivo_titulo') as $message)
                     <div class="invalid-feedback d-block">
                         {{ $message }}
