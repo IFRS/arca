@@ -53,7 +53,11 @@
                     </div>
 
                     @slot('footer')
-                        <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
+                        <p>
+                            <strong>Cria&ccedil;&atilde;o:</strong> {{ $oferta->created_at ? $oferta->created_at->format('d/m/Y \à\s h:i') : '-' }}
+                            &mdash;
+                            <strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y \à\s h:i') : '-' }}
+                        </p>
                     @endslot
                 @endcomponent
             @endpush

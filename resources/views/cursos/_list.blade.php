@@ -45,7 +45,11 @@
                     @endif
 
                     @slot('footer')
-                        <p><strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $curso->updated_at ? $curso->updated_at->format('d/m/Y \à\s h:i') : '-' }}</p>
+                        <p>
+                            <strong>Cria&ccedil;&atilde;o:</strong> {{ $curso->created_at ? $curso->created_at->format('d/m/Y \à\s h:i') : '-' }}
+                            &mdash;
+                            <strong>&Uacute;ltima Modifica&ccedil;&atilde;o:</strong> {{ $curso->updated_at ? $curso->updated_at->format('d/m/Y \à\s h:i') : '-' }}
+                        </p>
                     @endslot
                 @endcomponent
             @endpush
