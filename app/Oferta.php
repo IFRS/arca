@@ -28,7 +28,7 @@ class Oferta extends Model
      */
     public function curso()
     {
-        return $this->belongsTo('App\Curso', 'curso_id');
+        return $this->belongsTo('App\Curso', 'curso_id')->withTrashed();
     }
 
     /**
