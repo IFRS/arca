@@ -8,6 +8,7 @@ require('tinymce/plugins/table');
 
 tinymce.init({
     selector: 'textarea.editable',
+    content_css: '/css/app.css',
     plugins: "lists link table",
     menubar: false,
     toolbar: [
