@@ -72,9 +72,9 @@
                     @endforeach
                 </td>
                 @if ($isTrash)
-                    <td>{{ $oferta->deleted_at ? $oferta->deleted_at->format('d/m/Y h:i') : '-' }}</td>
+                    <td>{{ $oferta->deleted_at ? $oferta->deleted_at->format('d/m/Y \à\s h:i') : '-' }}</td>
                 @else
-                    <td>{{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y h:i') : '-' }}</td>
+                    <td>{{ $oferta->updated_at ? $oferta->updated_at->format('d/m/Y \à\s h:i') : '-' }}</td>
                 @endif
                 <td class="text-center">
                     @if ($isTrash)

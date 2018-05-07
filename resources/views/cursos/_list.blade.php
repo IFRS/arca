@@ -57,11 +57,11 @@
                 <td>{{ $curso->id }}</td>
                 <td><a href="#modal-curso-{{ $curso->id }}" data-toggle="modal">{{ $curso->nome }}</a></td>
                 <td>{{ count($curso->ofertas) }}</td>
-                <td>{{ $curso->created_at ? $curso->created_at->format('d/m/Y h:i'): '-' }}</td>
+                <td>{{ $curso->created_at ? $curso->created_at->format('d/m/Y \à\s h:i'): '-' }}</td>
                 @if ($isTrash)
-                    <td>{{ $curso->deleted_at ? $curso->deleted_at->format('d/m/Y h:i') : '-' }}</td>
+                    <td>{{ $curso->deleted_at ? $curso->deleted_at->format('d/m/Y \à\s h:i') : '-' }}</td>
                 @else
-                    <td>{{ $curso->updated_at ? $curso->updated_at->format('d/m/Y h:i') : '-' }}</td>
+                    <td>{{ $curso->updated_at ? $curso->updated_at->format('d/m/Y \à\s h:i') : '-' }}</td>
                 @endif
                 <td class="text-center">
                     @if ($isTrash)
