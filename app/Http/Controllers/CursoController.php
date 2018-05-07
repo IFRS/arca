@@ -87,6 +87,9 @@ class CursoController extends Controller
     public function delete(Request $request, Curso $curso)
     {
         if ($curso->delete()) {
+            foreach ($curso->ofertas as $oferta) {
+                $oferta->delete();
+            }
             $request->session()->flash('status', 'success');
             $request->session()->flash('message', 'Curso enviado para a lixeira com sucesso!');
         } else {
@@ -107,6 +110,9 @@ class CursoController extends Controller
     {
         $curso = Curso::onlyTrashed()->find($id);
         if ($curso->restore()) {
+            foreach ($curso->ofertas as $oferta) {
+                $oferta->restore();
+            }
             $request->session()->flash('status', 'success');
             $request->session()->flash('message', 'Curso restaurado com sucesso!');
         } else {
