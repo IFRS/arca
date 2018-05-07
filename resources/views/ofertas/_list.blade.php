@@ -8,7 +8,6 @@
                 <th>Modalidade</th>
                 <th>N&iacute;vel</th>
                 <th>Turnos</th>
-                <th>Criado em</th>
                 @if ($isTrash)
                     <th>Deletado em</th>
                 @else
@@ -68,7 +67,6 @@
                         {{ $turno->nome }}@if (!$loop->last){{ ', ' }}@endif
                     @endforeach
                 </td>
-                <td>{{ $oferta->created_at ? $oferta->created_at->format('d/m/Y h:i'): '-' }}</td>
                 @if ($isTrash)
                     <td>{{ $oferta->deleted_at ? $oferta->deleted_at->format('d/m/Y h:i') : '-' }}</td>
                 @else
