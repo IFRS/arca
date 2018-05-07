@@ -224,13 +224,19 @@ class OfertaController extends Controller
     public function restore(Request $request, $id)
     {
         $oferta = Oferta::onlyTrashed()->find($id);
-        if ($oferta->restore()) {
-            $request->session()->flash('status', 'success');
-            $request->session()->flash('message', 'Oferta restaurada com sucesso!');
-        } else {
+        if ($oferta->curso->trashed()) {
             $request->session()->flash('status', 'danger');
-            $request->session()->flash('message', 'Ocorreu um erro ao restaurar a oferta.');
+            $request->session()->flash('message', 'A oferta não pode ser restaurada pois seu curso está na lixeira.');
+        } else {
+            if ($oferta->restore()) {
+                $request->session()->flash('status', 'success');
+                $request->session()->flash('message', 'Oferta restaurada com sucesso!');
+            } else {
+                $request->session()->flash('status', 'danger');
+                $request->session()->flash('message', 'Ocorreu um erro ao restaurar a oferta.');
+            }
         }
+
         return redirect()->route('ofertas.index');
     }
 
