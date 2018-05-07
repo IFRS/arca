@@ -65,7 +65,7 @@
                 @endif
                 <td class="text-center">
                     @if ($isTrash)
-                        <form action="{{ route('cursos.restore', $curso->id) }}" method="post" class="action restore">
+                        <form action="{{ route('cursos.restore', $curso->id) }}" method="post" class="d-inline action restore">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-sm btn-info" title="Restaurar &quot;{{ $curso->nome }}&quot;"><i class="fas fa-undo"></i><span class="sr-only">Restaurar &quot;{{ $curso->nome }}&quot;</span></button>
@@ -73,7 +73,7 @@
                     @else
                         <a href="{{ route('cursos.edit', $curso->id) }}" class="btn btn-sm btn-secondary" title="Editar &quot;{{ $curso->nome }}&quot;"><i class="fas fa-edit"></i></a>
                     @endif
-                    <form class="d-inline" action="{{ ($isTrash) ? route('cursos.destroy', $curso->id) : route('cursos.delete', $curso->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
+                    <form action="{{ ($isTrash) ? route('cursos.destroy', $curso->id) : route('cursos.delete', $curso->id) }}" method="post" class="d-inline action {{ ($isTrash) ? 'destroy' : 'delete' }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         @if ($isTrash)

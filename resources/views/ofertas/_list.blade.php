@@ -78,7 +78,7 @@
                 @endif
                 <td class="text-center">
                     @if ($isTrash)
-                        <form action="{{ route('ofertas.restore', $oferta->id) }}" method="post" class="action restore">
+                        <form action="{{ route('ofertas.restore', $oferta->id) }}" method="post" class="d-inline action restore">
                             {{ method_field('PUT') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-sm btn-info" title="Restaurar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-undo"></i><span class="sr-only">Restaurar &quot;{{ $oferta->nome }}&quot;</span></button>
@@ -87,7 +87,7 @@
                         <a href="{{ route('ofertas.edit', $oferta->id) }}" class="btn btn-sm btn-secondary" title="Editar &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-pencil-alt"></i></a>
                         <a href="{{ route('ofertas.arquivos', $oferta->id) }}" class="btn btn-sm btn-info" title="Gerenciar Arquivos de &quot;{{ $oferta->nome }}&quot;"><i class="fas fa-file-alt"></i></a>
                     @endif
-                    <form class="d-inline" action="{{ ($isTrash) ? route('ofertas.destroy', $oferta->id) : route('ofertas.delete', $oferta->id) }}" method="post" class="action {{ ($isTrash) ? 'destroy' : 'delete' }}">
+                    <form action="{{ ($isTrash) ? route('ofertas.destroy', $oferta->id) : route('ofertas.delete', $oferta->id) }}" method="post" class="d-inline action {{ ($isTrash) ? 'destroy' : 'delete' }}">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
                         @if ($isTrash)
