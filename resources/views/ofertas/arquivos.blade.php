@@ -12,7 +12,15 @@
     @endif
     <div class="row">
         <div class="col-12">
-            <h2>{{ $oferta->nome }} - Arquivos</h2>
+            <h2>
+                Arquivos de {{ $oferta->nome }}<br>
+                <small>
+                    {{ $oferta->modalidade->nome }} &mdash; {{ $oferta->nivel->pai->nome }} <i class="fas fa-arrow-right"></i> {{ $oferta->nivel->nome }} &mdash;
+                    @foreach ($oferta->turnos as $turno)
+                        {{ $turno->nome }} @if (!$loop->last) {{ ', ' }} @endif
+                    @endforeach
+                </small>
+            </h2>
         </div>
     </div>
     <hr>
@@ -38,8 +46,8 @@
                 <tbody>
                     @foreach ($oferta->arquivos as $arquivo)
                         <tr>
-                            <td class="align-middle"><a href="{{ Storage::url($arquivo->arquivo) }}">{{ $arquivo->nome }}</a></td>
-                            <td class="align-middle">{{ Storage::url($arquivo->arquivo) }}</td>
+                            <td class="align-middle">{{ $arquivo->nome }}</td>
+                            <td class="align-middle"><a href="{{ Storage::url($arquivo->arquivo) }}">{{ Storage::url($arquivo->arquivo) }}</a></td>
                             <td class="align-middle">{{ Storage::mimeType($arquivo->arquivo) }}</td>
                             <td class="align-middle">{{ round(Storage::size($arquivo->arquivo) / 1000) }}&nbsp;Kb</td>
                             <td class="align-middle">{{ $arquivo->created_at ? $arquivo->created_at->format('d/m/Y h:i') : '-' }}</td>
