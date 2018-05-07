@@ -9,10 +9,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item{{ Request::is('cursos') ? ' active' : '' }}">
+            <li class="nav-item{{ Request::is('cursos*') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('cursos.index') }}">Cursos</a>
             </li>
-            <li class="nav-item{{ Request::is('ofertas') ? ' active' : '' }}">
+            <li class="nav-item{{ Request::is('ofertas*') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('ofertas.index') }}">Ofertas</a>
             </li>
             <li class="nav-item dropdown">
