@@ -60,7 +60,7 @@ return [
 
         // Allows only manually imported users to authenticate.
 
-        Adldap\Laravel\Validation\Rules\OnlyImported::class,
+        //Adldap\Laravel\Validation\Rules\OnlyImported::class,
 
     ],
 
@@ -257,7 +257,7 @@ return [
 
     'sync_attributes' => [
 
-        'username' => 'uid',
+        //'username' => 'uid',
 
         'name' => 'cn',
 
