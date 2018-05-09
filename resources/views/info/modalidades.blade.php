@@ -11,7 +11,7 @@
         <div class="col-12">
             <ul class="list-group">
                 @foreach ($modalidades as $modalidade)
-                    <li class="list-group-item">{{ $modalidade->nome }}</li>
+                    <li class="list-group-item">{{ $modalidade->id }} &dash; {{ $modalidade->nome }}</li>
                 @endforeach
             </ul>
         </div>

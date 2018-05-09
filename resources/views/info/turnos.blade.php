@@ -11,7 +11,7 @@
         <div class="col-12">
             <ul class="list-group">
                 @foreach ($turnos as $turno)
-                    <li class="list-group-item">{{ $turno->nome }}</li>
+                    <li class="list-group-item">{{ $turno->id }} &dash; {{ $turno->nome }}</li>
                 @endforeach
             </ul>
         </div>
