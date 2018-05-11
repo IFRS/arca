@@ -17,12 +17,14 @@ class OfertasController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('campus')) {
-            return OfertaResource::collection(Oferta::with(['curso', 'arquivos'])->whereHas('campus', function($query) use ($request) {
-                $query->where('id', '=', $request->get('campus'));
-            })->get());
-        }
-        return OfertaResource::collection(Oferta::with(['curso', 'campus', 'arquivos'])->get());
+        return OfertaResource::collection(Oferta::with(['curso', 'campus', 'arquivos'])
+            ->when($request->has('campus'), function($query) use ($request) {
+                return $query->where('campus_id', $request->get('campus'));
+            })
+            ->when($request->has('modalidade'), function($query) use ($request) {
+                return $query->where('modalidade_id', $request->get('modalidade'));
+            })
+            ->get());
     }
 
     /**
