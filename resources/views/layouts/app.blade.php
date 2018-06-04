@@ -10,8 +10,8 @@
 
         <title>aRCA - Reposit&oacute;rio de Cursos Acad&ecirc;micos</title>
 
+        <link rel="stylesheet" href="{{ URL::asset('css/vendor.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
-        <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
     </head>
     <body>
         @stack('modals')
