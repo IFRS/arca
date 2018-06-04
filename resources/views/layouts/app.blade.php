@@ -45,6 +45,7 @@
                 </div>
             </div>
         </footer>
+        <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
         @stack('scripts')
     </body>
 </html>
