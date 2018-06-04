@@ -9,6 +9,7 @@ require('tinymce/plugins/table');
 tinymce.init({
     selector: 'textarea.editable',
     content_css: '/css/app.css',
+    skin_url: '/tinymce_skins/lightgray',
     plugins: "lists link table",
     menubar: false,
     toolbar: [

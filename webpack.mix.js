@@ -21,3 +21,5 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
 
 mix.sass('resources/assets/sass/vendor.scss', 'public/css')
    .sourceMaps();
+
+mix.copyDirectory('node_modules/tinymce/skins', 'public/tinymce_skins');

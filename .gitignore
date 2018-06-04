@@ -5,6 +5,7 @@
 /public/fonts/vendor/
 /public/images/vendor/
 /public/js/
+/public/tinymce_skins/
 /storage/*.key
 /vendor
 /.idea
