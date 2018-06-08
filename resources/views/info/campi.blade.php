@@ -11,7 +11,7 @@
         <div class="col-12">
             <ul class="list-group">
                 @foreach ($campi as $campus)
-                    <li class="list-group-item">{{ $campus->id }} &dash; {{ $campus->nome }}</li>
+                    <li class="list-group-item">{{ $campus->id }}: {{ $campus->nome }}</li>
                 @endforeach
             </ul>
         </div>

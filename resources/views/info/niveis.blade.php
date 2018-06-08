@@ -12,11 +12,11 @@
             <ul class="list-group">
                 @foreach ($niveis as $nivel)
                     <li class="list-group-item">
-                        <strong>{{ $nivel->id }} &dash; {{ $nivel->nome }}</strong>
+                        <strong>{{ $nivel->id }}: {{ $nivel->nome }}</strong>
                         @if ($nivel->filhos)
                             <ul class="mt-1">
                                 @foreach ($nivel->filhos as $filho)
-                                    <li class="mb-1">{{ $filho->id }} &dash; {{ $filho->nome }}</li>
+                                    <li class="mb-1">{{ $filho->id }}: {{ $filho->nome }}</li>
                                 @endforeach
                             </ul>
                         @endif
