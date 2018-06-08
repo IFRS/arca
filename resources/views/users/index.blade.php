@@ -11,11 +11,14 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-12 col-md-10">
+        <div class="col-12 col-md-7">
             <h2>Usu&aacute;rios</h2>
         </div>
-        <div class="col-12 col-md-2">
-            <a href="{{ route('users.create') }}" class="btn btn-primary float-right"><i class="fas fa-plus"></i>&nbsp;Adicionar novo</a>
+        <div class="col-12 col-md-5 text-right">
+            <div class="btn-group" role="group" aria-label="Adicionar Usuário">
+                <a href="#" class="btn btn-primary disabled"><i class="fas fa-plus"></i>&nbsp;Adicionar</a>
+                <a href="{{ route('users.create') }}" class="btn btn-success"><i class="fas fa-plus"></i>&nbsp;Adicionar do LDAP</a>
+            </div>
         </div>
     </div>
     <hr>
