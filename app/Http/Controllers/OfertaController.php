@@ -13,9 +13,25 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreOferta;
 use App\Http\Requests\StoreOfertaArquivo;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class OfertaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if ($request->route()->getName() == 'ofertas.delete' || $request->route()->getName() == 'ofertas.restore' || $request->route()->getName() == 'ofertas.destroy') {
+                if (Gate::denies('manage-ofertas')) {
+                    $request->session()->flash('status', 'danger');
+                    $request->session()->flash('message', 'Você não tem permissão para fazer isso.');
+                    return redirect()->route('ofertas.index');
+                }
+            }
+
+            return $next($request);
+        });
+    }
+
     /**
      * Mostra a lista de Ofertas.
      *

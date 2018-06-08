@@ -5,9 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Adldap\Laravel\Facades\Adldap;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (Gate::denies('manage-users')) {
+                $request->session()->flash('status', 'danger');
+                $request->session()->flash('message', 'Você não tem permissão para fazer isso.');
+                return redirect()->route('index');
+            }
+
+            return $next($request);
+        });
+    }
+
     /**
      * Mostra a lista de Usuários.
      *
@@ -59,6 +73,8 @@ class UserController extends Controller
             $user = new User();
             $user->username = $ldap_user->uid[0];
             $user->name = $ldap_user->cn[0];
+            $user->password = bcrypt(str_random(16));
+            $user->role = $request->role;
 
             if ($user->save()) {
                 $request->session()->flash('status', 'success');

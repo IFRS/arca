@@ -5,9 +5,25 @@ namespace App\Http\Controllers;
 use App\Curso;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCurso;
+use Illuminate\Support\Facades\Gate;
 
 class CursoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if ($request->route()->getName() == 'cursos.delete' || $request->route()->getName() == 'cursos.restore' || $request->route()->getName() == 'cursos.destroy') {
+                if (Gate::denies('manage-cursos')) {
+                    $request->session()->flash('status', 'danger');
+                    $request->session()->flash('message', 'Você não tem permissão para fazer isso.');
+                    return redirect()->route('cursos.index');
+                }
+            }
+
+            return $next($request);
+        });
+    }
+
     /**
      * Mostra a lista de Cursos.
      *

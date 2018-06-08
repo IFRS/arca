@@ -15,9 +15,11 @@
             <li class="nav-item{{ Request::is('ofertas*') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('ofertas.index') }}">Ofertas</a>
             </li>
+            @can('manage-users')
             <li class="nav-item{{ Request::is('users*') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('users.index') }}">Usu&aacute;rios</a>
             </li>
+            @endcan
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle{{ (Request::is('campi') || Request::is('modalidades') || Request::is('niveis') || Request::is('turnos')) ? ' active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dados
