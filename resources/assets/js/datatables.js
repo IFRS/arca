@@ -106,4 +106,39 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('.table-users').DataTable({
+        order:      [],
+        searching:  true,
+        paging:     false,
+        info:       false,
+        bAutoWidth: true,
+        "columnDefs": [{
+            "targets":   'no-sort',
+            "orderable": false,
+        }],
+        language: {
+            "sEmptyTable":     "Nenhum Usuário encontrado",
+            "sInfo":           "Mostrando de _START_ até _END_ de _TOTAL_ Usuários",
+            "sInfoEmpty":      "Mostrando 0 até 0 de 0 Usuários",
+            "sInfoFiltered":   "(Filtrados de _MAX_ Usuários)",
+            "sInfoPostFix":    "",
+            "sInfoThousands":  ".",
+            "sLengthMenu":     "_MENU_ Usuários por página",
+            "sLoadingRecords": "Carregando...",
+            "sProcessing":     "Processando...",
+            "sZeroRecords":    "Nenhum Usuário encontrado",
+            "sSearch":         "Buscar Usuários",
+            "oPaginate": {
+                "sNext":     "Próximo",
+                "sPrevious": "Anterior",
+                "sFirst":    "Primeiro",
+                "sLast":     "Último"
+            },
+            "oAria": {
+                "sSortAscending":  ": Ordenar colunas de forma ascendente",
+                "sSortDescending": ": Ordenar colunas de forma descendente"
+            }
+        }
+    });
 });

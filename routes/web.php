@@ -35,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::put('ofertas/{oferta}/restore', 'OfertaController@restore')->name('ofertas.restore');
     Route::delete('ofertas/{oferta}/destroy', 'OfertaController@destroy')->name('ofertas.destroy');
 
+    Route::get('users', 'UserController@index')->name('users.index');
+    Route::get('users/novo', 'UserController@novo')->name('users.create');
+    Route::post('users', 'UserController@save')->name('users.store');
+    Route::delete('users/{curso}/destroy', 'UserController@destroy')->name('users.destroy');
+
     Route::get('campi', 'InfoController@campi')->name('campi.index');
     Route::get('modalidades', 'InfoController@modalidades')->name('modalidades.index');
     Route::get('niveis', 'InfoController@niveis')->name('niveis.index');
