@@ -15,6 +15,9 @@ class UsersTableSeeder extends Seeder
             'name' => 'Administrador',
             'username' => 'admin',
             'password' => bcrypt('admin'),
+            'role' => 'administrator',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
     }
 }
