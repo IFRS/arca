@@ -201,7 +201,7 @@ return [
         |
         */
 
-        'sync' => env('ADLDAP_PASSWORD_SYNC', false),
+        'sync' => env('ADLDAP_PASSWORD_SYNC', true),
 
         /*
         |--------------------------------------------------------------------------
