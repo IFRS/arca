@@ -40,10 +40,25 @@ Route::middleware(['auth'])->group(function () {
     Route::post('users', 'UserController@save')->name('users.store');
     Route::delete('users/{curso}/destroy', 'UserController@destroy')->name('users.destroy');
 
-    Route::get('campi', 'InfoController@campi')->name('campi.index');
-    Route::get('modalidades', 'InfoController@modalidades')->name('modalidades.index');
-    Route::get('niveis', 'InfoController@niveis')->name('niveis.index');
-    Route::get('turnos', 'InfoController@turnos')->name('turnos.index');
+    Route::get('campi', function () {
+        $campi = Campus::all();
+        return view('info.campi')->with('campi', $campi);
+    })->name('campi.index');
+
+    Route::get('modalidades', function() {
+        $modalidades = Modalidade::all();
+        return view('info.modalidades')->with('modalidades', $modalidades);
+    })->name('modalidades.index');
+
+    Route::get('niveis', function () {
+        $niveis = Nivel::whereNull('pai_id')->get();
+        return view('info.niveis')->with('niveis', $niveis);
+    })->name('niveis.index');
+
+    Route::get('turnos', function () {
+        $turnos = Turno::all();
+        return view('info.turnos')->with('turnos', $turnos);
+    })->name('turnos.index');
 
     Route::get('sobre', function() {
         return view('info.sobre');

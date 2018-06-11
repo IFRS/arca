@@ -20,6 +20,7 @@
                 <a class="nav-link" href="{{ route('users.index') }}">Usu&aacute;rios</a>
             </li>
             @endcan
+            @can('view-dados')
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle{{ (Request::is('campi') || Request::is('modalidades') || Request::is('niveis') || Request::is('turnos')) ? ' active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Dados
@@ -31,6 +32,7 @@
                     <a class="dropdown-item{{ Request::is('turnos') ? ' active' : '' }}" href="{{ route('turnos.index') }}">Turnos</a>
                 </div>
             </li>
+            @endcan
             <li class="nav-item{{ Request::is('sobre') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('sobre.index') }}">Sobre</a>
             </li>
